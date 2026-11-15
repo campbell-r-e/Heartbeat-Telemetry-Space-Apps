@@ -1,0 +1,16 @@
+# Sleep detection references
+
+Live sleep is detected on the server from the Galaxy Watch's own accelerometer (no phone in space; owner decision). The method is van Hees et al. 2018, HDCZA plus sustained inactivity, as described in SPEC.md §5.7. Both papers are open access under Creative Commons Attribution licenses, so local copies are kept here with their citations.
+
+| File | Citation | License | Used for |
+|---|---|---|---|
+| `vanHees-2018-SciRep-sleep-without-diary.pdf` | van Hees VT, Sabia S, Jones SE, et al. "Estimating sleep parameters using an accelerometer without sleep diary." *Scientific Reports* 8, 12975 (2018). https://doi.org/10.1038/s41598-018-31266-z | CC BY 4.0 | The z-angle (p. 2, "Accelerometer data preparation"), the HDCZA steps (p. 3, "Heuristic algorithm to detect the SPT-window"), sleep as sustained inactivity inside the window (p. 3), the "noon-noon with >16 h of wear time" night criterion (p. 2, "Study population"), and the 0.13–0.50° threshold range (p. 4), which the app applies (owner decision) |
+| `vanHees-2015-PLoSONE-sleep-duration.pdf` | van Hees VT, Sabia S, Anderson KN, et al. "A Novel, Open Access Method to Assess Sleep Duration Using a Wrist-Worn Accelerometer." *PLoS ONE* 10(11), e0142533 (2015). https://doi.org/10.1371/journal.pone.0142533 | Creative Commons Attribution License (the article gives no version) | The original definition of sustained inactivity (no change in arm angle larger than 5° over at least 5 minutes), which the 2018 paper cites |
+
+**Reference implementation (not copied here).** The 2018 paper names R package GGIR 1.5-23 as its implementation (CRAN archive: https://cran.r-project.org/src/contrib/Archive/GGIR/GGIR_1.5-23.tar.gz). Where the paper is silent, the server follows it and cites the file: `R/g.metric.R` (rolling 5-second median of each axis, centered, then `atan(Gzm / sqrt(Gxm^2 + Gym^2))`), and `R/g.sib.det.R` (`sptwindow_HDCZA`: `zoo::rollapply(angle, 60, medabsdi)`, `quantile(x, probs = 0.1) * 15`, blocks `> 360` epochs, gaps `< 720` epochs; sustained inactivity when posture changes are more than 60 epochs apart).
+
+**Threshold range (applied, owner decision).** The paper bounds the HDCZA threshold to 0.13–0.50, "the 2.5th and 97.5th percentile of the distribution of the threshold value observed in a sample of daily life accelerometer recordings" (p. 4), and GGIR applies that range by default (`constrain2range = TRUE` in `R/g.part3.R` and `R/g.shell.GGIR.R`). The app applies it too, so a restless day never becomes one 24-hour window, and GGIR's 0.20 substitute for a zero threshold is never needed.
+
+**The day's time zone.** GGIR places each noon-to-noon day by the local clock of its `desiredtz` argument (`R/g.sib.det.R`: `g.detecmidnight(time, desiredtz)`). The app keeps the zone in the mission settings record (`sleepDayTimeZone`: `UTC` in flight, `America/Indiana/Indianapolis` for testing on Earth) and reads both noons on that zone's wall clock, so daylight-time change days last 23 or 25 hours. Every time shown stays in UTC.
+
+**One difference from the printed paper.** The 2018 paper prints the angle as tan⁻¹(a_z / (a_x² + a_y²)), without the square root. GGIR 1.5-23 and the geometry of the z-angle use the square root, atan(a_z / √(a_x² + a_y²)); the watch uses that.

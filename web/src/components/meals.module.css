@@ -1,0 +1,168 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 14px;
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.search:focus-within {
+  border-color: var(--accent);
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.category {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+}
+
+.category[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accentbg);
+  color: var(--accent);
+}
+
+.foods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.food {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.foodName {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.foodMeta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.foodNumbers {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.sources {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sources summary {
+  cursor: pointer;
+}
+
+.sources ul {
+  margin: 6px 0 0;
+  padding-left: 16px;
+}
+
+.add {
+  margin-top: 4px;
+  width: 100%;
+}
+
+.logHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Points from today's meal tasks (SPEC §7), as in the mockup. */
+.logPoints {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.logItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+
+.logTime {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  width: 72px;
+}
+
+.logName {
+  flex: 1;
+}
+
+.remove {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.remove:hover {
+  color: var(--bad);
+  border-color: var(--bad);
+}
+
+.log {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.notes {
+  font-size: 13px;
+  color: var(--muted);
+}

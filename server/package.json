@@ -1,0 +1,33 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test \"test/**/*.test.ts\"",
+    "fetch:radlab": "tsx scripts/fetch-radlab.ts",
+    "fetch:eda": "tsx scripts/fetch-eda.ts",
+    "import:wxserver": "tsx scripts/import-wxserver.ts",
+    "import:zepp": "tsx scripts/import-zepp.ts",
+    "demo:reset": "tsx scripts/demo-reset.ts",
+    "demo:radiation-forecast": "tsx scripts/radiation-forecast.ts",
+    "generate:sample-history": "tsx scripts/generate-sample-history.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11",
+    "@heartbeat/shared": "*",
+    "fastify": "^5",
+    "pg": "^8.23.1",
+    "ws": "8.22.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/pg": "^8.23.1",
+    "@types/ws": "8.18.1",
+    "tsx": "^4",
+    "typescript": "^5"
+  }
+}

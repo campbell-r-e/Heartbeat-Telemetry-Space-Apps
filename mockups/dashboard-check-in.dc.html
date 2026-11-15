@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mood check-in</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#7FB4FF}a:hover{color:#B5D3FF}
+.theme-dark{--bg:#0A0E16;--panel:#121826;--panel2:#18202F;--line:#253045;--text:#E8EDF6;--muted:#9AA6BA;--accent:#7FB4FF;--accentbg:rgba(127,180,255,.14);--ok:#3DDC97;--okbg:rgba(61,220,151,.12)}
+.theme-light{--bg:#F3F5F9;--panel:#FFFFFF;--panel2:#EEF1F6;--line:#D6DCE6;--text:#111827;--muted:#4B5567;--accent:#1F5FBF;--accentbg:rgba(31,95,191,.10);--ok:#0F7B4F;--okbg:rgba(15,123,79,.10)}
+</style>
+</helmet>
+<div class="{{themeClass}}" style="min-height: 100vh; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; font-size: 15px; line-height: 1.45">
+<div style="max-width: 1360px; margin: 0 auto; padding: 24px 24px 48px; display: flex; flex-direction: column; gap: 18px">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); color: var(--text); text-decoration: none; font-weight: 600">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>Dashboard</a>
+<div style="display: flex; flex-direction: column; flex: 1 1 260px; min-width: 0">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700">Mood check-in</h1>
+<span style="color: var(--muted); font-size: 13px">Isolation and confinement · Astronaut 1 · once a day, due 20:00 UTC</span>
+</div>
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" style="height: 44px; min-width: 44px; padding: 0 14px; display: flex; align-items: center; gap: 8px; background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 10px; font: inherit; cursor: pointer">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+<span>{{themeText}}</span>
+</button>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+<section aria-label="Check-in" style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 18px; padding: 20px 22px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px">
+
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">How is your mood?</legend>
+<span style="font-size: 13px; color: var(--muted)">1 is very low, 5 is very good.</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px">
+<sc-for list="{{moods}}" as="m" hint-placeholder-count="5">
+<button type="button" onClick="{{m.pick}}" aria-pressed="{{m.on}}" style="{{m.style}}">
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+<circle cx="17" cy="17" r="14"></circle><circle cx="12" cy="14" r="1.4" fill="currentColor" stroke="none"></circle><circle cx="22" cy="14" r="1.4" fill="currentColor" stroke="none"></circle>
+<path d="{{m.mouth}}"></path>
+</svg>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">{{m.n}}</span>
+<span style="font-size: 14px; font-weight: 600">{{m.label}}</span>
+</button>
+</sc-for>
+</div>
+</fieldset>
+
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">How stressed do you feel?</legend>
+<span style="font-size: 13px; color: var(--muted)">1 is calm, 5 is very stressed.</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px">
+<sc-for list="{{stresses}}" as="s" hint-placeholder-count="5">
+<button type="button" onClick="{{s.pick}}" aria-pressed="{{s.on}}" style="{{s.style}}">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 500">{{s.n}}</span>
+<span style="font-size: 14px; font-weight: 600">{{s.label}}</span>
+</button>
+</sc-for>
+</div>
+</fieldset>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<button type="button" onClick="{{save}}" style="{{saveStyle}}">{{saveText}}</button>
+<span style="font-size: 13px; color: var(--muted)">{{saveNote}}</span>
+</div>
+</section>
+
+<aside aria-label="Recent check-ins" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Last 14 days</span>
+<sc-for list="{{history}}" as="h" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line)">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); width: 112px">{{h.when}}</span>
+<span style="flex: 1">Mood {{h.mood}} · Stress {{h.stress}}</span>
+</div>
+</sc-for>
+<a href="#" style="font-size: 14px; margin-top: 4px">Mind details and learn more</a>
+</aside>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startDark":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { dark: null, mood: 4, stress: null, saved: false }; }
+  renderVals() {
+    var self = this;
+    var dark = this.state.dark === null ? (this.props.startDark ?? true) : this.state.dark;
+    function tile(on) { return 'min-height: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-radius: 12px; font: inherit; cursor: pointer; color: var(--text); background: ' + (on ? 'var(--accentbg)' : 'var(--panel2)') + '; border: ' + (on ? '2px solid var(--accent)' : '1px solid var(--line)'); }
+    var M = [
+      { n: 1, label: 'Very low', mouth: 'M11 24c3-4 9-4 12 0' },
+      { n: 2, label: 'Low', mouth: 'M12 23c2.5-2 7.5-2 10 0' },
+      { n: 3, label: 'Okay', mouth: 'M12 22h10' },
+      { n: 4, label: 'Good', mouth: 'M12 21c2.5 2 7.5 2 10 0' },
+      { n: 5, label: 'Very good', mouth: 'M11 20c3 4.5 9 4.5 12 0' }
+    ];
+    var S = [{ n: 1, label: 'Calm' }, { n: 2, label: 'Mild' }, { n: 3, label: 'Moderate' }, { n: 4, label: 'High' }, { n: 5, label: 'Very stressed' }];
+    var ready = this.state.mood !== null && this.state.stress !== null;
+    return {
+      themeClass: dark ? 'theme-dark' : 'theme-light',
+      themeText: dark ? 'Light mode' : 'Dark mode',
+      themeLabel: dark ? 'Switch to light mode' : 'Switch to dark mode',
+      toggleTheme: function () { self.setState({ dark: !dark }); },
+      moods: M.map(function (m) { var on = self.state.mood === m.n; return Object.assign({}, m, { on: on, style: tile(on), pick: function () { self.setState({ mood: m.n, saved: false }); } }); }),
+      stresses: S.map(function (s) { var on = self.state.stress === s.n; return Object.assign({}, s, { on: on, style: tile(on), pick: function () { self.setState({ stress: s.n, saved: false }); } }); }),
+      save: function () { if (ready) self.setState({ saved: true }); },
+      saveText: this.state.saved ? 'Saved' : 'Save check-in',
+      saveNote: this.state.saved ? '✓ Sent to the onboard server' : (ready ? 'Counts toward today’s 20:00 check-in task.' : 'Pick a mood and a stress level to save.'),
+      saveStyle: 'height: 44px; padding: 0 20px; border-radius: 10px; font: inherit; font-weight: 700; cursor: ' + (ready ? 'pointer' : 'not-allowed') + '; border: 1px solid ' + (ready ? 'var(--accent)' : 'var(--line)') + '; background: ' + (ready ? 'var(--accentbg)' : 'transparent') + '; color: ' + (ready ? 'var(--accent)' : 'var(--muted)'),
+      history: [
+        { when: 'Nov 13 · 20:04', mood: 4, stress: 2 },
+        { when: 'Nov 12 · 19:51', mood: 3, stress: 3 }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

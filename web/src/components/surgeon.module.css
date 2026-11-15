@@ -1,0 +1,785 @@
+/* The flight surgeon console, drawn to the approved mockup (mockups/surgeon-console.dc.html). */
+
+.page {
+  gap: 18px;
+}
+
+/* ---- Header ---- */
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 16px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.appName {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.delayBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.smallLabel {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.segments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 3px;
+  background: var(--panel2);
+  border-radius: var(--radius-control);
+}
+
+.segment {
+  height: 36px;
+  min-width: 44px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 0;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text);
+}
+
+.segment[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.segment:disabled {
+  cursor: progress;
+}
+
+.realTime {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.asOf {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 14px;
+  background: var(--accentbg);
+  border-radius: var(--radius-control);
+  min-width: 150px;
+}
+
+.asOfLabel {
+  font-size: 11px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+}
+
+.asOfValue {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ---- Tabs ---- */
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tab {
+  height: 44px;
+  padding: 0 16px;
+  border-bottom: 3px solid transparent;
+  color: var(--muted);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab[aria-selected="true"] {
+  border-bottom-color: var(--accent);
+  color: var(--text);
+}
+
+.count {
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--bad);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---- Alerts tab ---- */
+
+.alertsLayout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.feed {
+  flex: 999 1 640px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedHead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.feedHead .sectionTitle {
+  flex: 1;
+}
+
+.filter {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.filter:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.filter[aria-current="true"] {
+  border-color: var(--accent);
+  background: var(--accentbg);
+  color: var(--accent);
+}
+
+.empty {
+  margin: 0;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-panel);
+  color: var(--muted);
+}
+
+.alertCard {
+  background: var(--panel);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.alertCard[data-emphasis="urgent"] {
+  border: 2px solid var(--bad);
+}
+
+.alertCard[data-emphasis="done"] {
+  opacity: 0.6;
+}
+
+.alertSummary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 14px 16px;
+  min-height: 44px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.alertSummary:hover {
+  color: var(--text);
+}
+
+.alertTitle {
+  font-weight: 600;
+  flex: 1 1 260px;
+}
+
+.state {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--panel2);
+  color: var(--muted);
+}
+
+.state[data-state="new"] {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.state[data-state="resolved"] {
+  background: var(--okbg);
+  color: var(--ok);
+}
+
+.times {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  width: 100%;
+}
+
+.alertBody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--line);
+}
+
+.message {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  padding-top: 14px;
+  margin: 0;
+}
+
+.message dd {
+  margin: 0;
+}
+
+.chartBox {
+  background: var(--panel2);
+  border-radius: var(--radius-control);
+  padding: 12px;
+}
+
+.chartHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.chartNote {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chartEmpty {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.noteLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.textarea,
+.input,
+.select {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: 10px;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.input,
+.select {
+  height: 44px;
+  padding: 0 10px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--line);
+  background: var(--panel2);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.btn:hover {
+  color: var(--text);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btnAccent {
+  border-color: var(--accent);
+  background: var(--accentbg);
+  color: var(--accent);
+}
+
+.btnAccent:hover {
+  color: var(--accent);
+}
+
+.btnOk {
+  border-color: var(--ok);
+  background: var(--okbg);
+  color: var(--ok);
+}
+
+.pushRight {
+  margin-left: auto;
+}
+
+.sentNotes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+
+.sentNote {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding: 8px 12px;
+  background: var(--panel2);
+  border-radius: var(--radius-control);
+}
+
+.sentNoteText {
+  flex: 1 1 240px;
+  white-space: pre-wrap;
+}
+
+.sentNoteStatus {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sentNoteStatus[data-read="true"] {
+  color: var(--ok);
+}
+
+/* ---- Crew summary ---- */
+
+.crewAside {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.crewCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.crewCard:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.crewHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.crewName {
+  font-weight: 600;
+  flex: 1;
+}
+
+.chips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: var(--tonebg);
+  color: var(--tone);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.watchLine {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---- Crew & Watches tab ---- */
+
+.crewTab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--accentbg);
+  border-radius: var(--radius-control);
+  color: var(--text);
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+}
+
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  text-align: left;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.watchCell {
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.nameCell {
+  font-weight: 600;
+}
+
+.monoCell {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.sync {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--tonebg);
+  color: var(--tone);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.smallBtn {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--panel2);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.smallBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.smallBtnDanger {
+  border-color: var(--bad);
+  background: transparent;
+  color: var(--bad);
+}
+
+.smallSelect {
+  height: 36px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 8px;
+  max-width: 220px;
+}
+
+.confirmText {
+  font-size: 13px;
+}
+
+.watchRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--panel2);
+  border-radius: var(--radius-control);
+}
+
+.watchName {
+  flex: 1 1 240px;
+}
+
+.watchBattery {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.addForm {
+  flex-basis: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  align-items: end;
+  padding: 14px;
+  background: var(--panel2);
+  border-radius: var(--radius-control);
+}
+
+/* The result message under the add form spans the whole row. */
+.addForm > p {
+  grid-column: 1 / -1;
+}
+
+.addForm .btn {
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.field .input,
+.field .select {
+  background: var(--panel);
+}
+
+.failedList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.failedItem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--bad);
+  background: var(--badbg);
+  border-radius: var(--radius-control);
+  font-size: 14px;
+}
+
+.failedWhat {
+  font-weight: 600;
+  flex: 1 1 240px;
+}
+
+.failedMeta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  width: 100%;
+}
+
+/* ---- Demo control: the labeled simulated solar storm (SPEC §13) ---- */
+
+.stormControl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 14px 20px;
+  background: var(--panel);
+  border: 1px dashed var(--warn);
+  border-radius: var(--radius-panel);
+}
+
+.stormText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.stormTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.stormNote {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stormState {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.stormButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+

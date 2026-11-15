@@ -1,0 +1,239 @@
+{
+  "astronautId": "a1",
+  "at": "2026-11-14T20:30:00.000Z",
+  "overall": "watch",
+  "areas": [
+    {
+      "area": "vitals",
+      "status": "normal",
+      "reason": null
+    },
+    {
+      "area": "radiation",
+      "status": "watch",
+      "reason": null
+    },
+    {
+      "area": "gravity",
+      "status": null,
+      "reason": "No data yet"
+    },
+    {
+      "area": "cabin",
+      "status": "normal",
+      "reason": null
+    },
+    {
+      "area": "nutrition",
+      "status": null,
+      "reason": "No meals logged yesterday"
+    },
+    {
+      "area": "mind",
+      "status": null,
+      "reason": "No data yet"
+    }
+  ],
+  "metrics": [
+    {
+      "metric": "heartRate",
+      "status": "normal"
+    },
+    {
+      "metric": "radiationDoseRate",
+      "status": "watch"
+    },
+    {
+      "metric": "someFutureMetric",
+      "status": "normal"
+    }
+  ],
+  "evaluations": [
+    {
+      "astronautId": "a1",
+      "ruleId": "radiation-daily-dose",
+      "area": "radiation",
+      "hazard": "radiation",
+      "metrics": [
+        "radiationDoseRate"
+      ],
+      "layer": "standard",
+      "status": "watch",
+      "message": {
+        "what": "Test message",
+        "why": "Test reason",
+        "do": "Test action"
+      },
+      "source": {
+        "requirementId": null,
+        "document": "Test document",
+        "ours": true
+      },
+      "crewWide": true,
+      "at": "2026-11-14T20:00:00.000Z",
+      "title": "Test rule"
+    }
+  ],
+  "pendingRules": [
+    {
+      "ruleId": "noise-sleep",
+      "area": "cabin",
+      "waitingFor": [
+        "sleepPeriod"
+      ]
+    }
+  ],
+  "noRecentData": [
+    "skinTemp",
+    "someFutureMetric"
+  ],
+  "derived": {
+    "hrv": {
+      "rmssdMs": 41.6,
+      "at": "2026-11-14T20:20:00.000Z"
+    },
+    "exerciseToday": {
+      "day": "2026-11-14",
+      "minutes": 45,
+      "goalMinutes": 120,
+      "thresholdBpm": 125
+    },
+    "radiationDailyDose": {
+      "dailyDoseUGy": 156.6,
+      "previousSevenDayAverageUGy": 120.5,
+      "multiple": 1.3,
+      "at": "2026-11-14T20:00:00.000Z"
+    },
+    "missionDose": {
+      "mSv": 9.26,
+      "careerLimitMSv": 600,
+      "shareOfCareerLimit": 0.0154,
+      "projectedMSv": 167.9,
+      "projectedShareOfCareerLimit": 0.2798,
+      "projectionDays": 180,
+      "at": "2026-11-14T20:00:00.000Z"
+    },
+    "nutritionToday": {
+      "day": "2026-11-14",
+      "complete": false,
+      "mealsLogged": 0,
+      "totals": {
+        "kcal": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        },
+        "proteinG": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        },
+        "calciumMg": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        },
+        "vitaminDUg": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        },
+        "sodiumMg": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        }
+      },
+      "targets": {
+        "kcal": {
+          "min": null,
+          "max": null
+        },
+        "proteinG": {
+          "min": null,
+          "max": null
+        },
+        "proteinPctOfKcal": {
+          "min": 15,
+          "max": 30
+        },
+        "calciumMg": {
+          "min": 1200,
+          "max": 2000
+        },
+        "vitaminDUg": {
+          "min": 25,
+          "max": 50
+        },
+        "sodiumMg": {
+          "min": 1500,
+          "max": 2300
+        },
+        "eerKcal": null
+      },
+      "statuses": {
+        "energy": null,
+        "protein": null,
+        "calcium": null,
+        "vitaminD": null,
+        "sodium": null
+      }
+    },
+    "nutritionYesterday": {
+      "day": "2026-11-13",
+      "complete": true,
+      "mealsLogged": 0,
+      "totals": {
+        "kcal": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        },
+        "proteinG": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        },
+        "calciumMg": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        },
+        "vitaminDUg": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        },
+        "sodiumMg": {
+          "atLeast": 0,
+          "unknownMeals": 0
+        }
+      },
+      "targets": {
+        "kcal": {
+          "min": null,
+          "max": null
+        },
+        "proteinG": {
+          "min": null,
+          "max": null
+        },
+        "proteinPctOfKcal": {
+          "min": 15,
+          "max": 30
+        },
+        "calciumMg": {
+          "min": 1200,
+          "max": 2000
+        },
+        "vitaminDUg": {
+          "min": 25,
+          "max": 50
+        },
+        "sodiumMg": {
+          "min": 1500,
+          "max": 2300
+        },
+        "eerKcal": null
+      },
+      "statuses": {
+        "energy": null,
+        "protein": null,
+        "calcium": null,
+        "vitaminD": null,
+        "sodium": null
+      }
+    }
+  }
+}

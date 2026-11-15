@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch list page, large text</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 520px; height: 520px; display: flex; align-items: center; justify-content: center; background: #1A1F29; font-family: Inter, sans-serif; color: #E8EDF6">
+<div style="position: relative; width: 450px; height: 450px; border-radius: 50%; background: #000; box-shadow: 0 0 0 14px #2B313C, 0 0 0 16px #3A4250; overflow: hidden">
+<div style="position: absolute; top: 18px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 2px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 26px">15:02</span>
+<span style="font-size: 28px; font-weight: 700">{{title}}</span>
+</div>
+<div style="position: absolute; top: 104px; left: 34px; right: 34px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="3">
+<div style="{{r.style}}">
+<span style="display: flex; flex-direction: column; min-width: 0"><span style="font-size: 24px; color: #9AA6BA">{{r.label}}</span><span style="font-size: 20px; color: #9AA6BA">{{r.note}}</span></span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: {{r.size}}px; font-weight: 700; line-height: 1; white-space: nowrap">{{r.value}}<span style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 500; color: #9AA6BA"> {{r.unit}}</span></span>
+</div>
+</sc-for>
+<sc-if value="{{gear}}" hint-placeholder-val="{{ false }}">
+<div style="align-self: center; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #10151F; border: 1px solid #253045; color: #9AA6BA">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+</div>
+</sc-if>
+</div>
+<div style="position: absolute; right: 18px; top: 150px; width: 5px; height: 150px; border-radius: 3px; background: #253045"><div style="width: 5px; height: 60px; border-radius: 3px; background: #9AA6BA"></div></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"page":{"editor":"enum","options":["recovery","cabin","food"],"default":"recovery"},"$preview":{"width":520,"height":520}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var page = this.props.page ?? 'recovery';
+    var base = 'display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 22px; border-radius: 28px; background: #10151F; border: ';
+    function row(r, i) { var b = r.k === 'watch' ? '2px solid #FFC24B' : r.k === 'alert' ? '2px solid #FF6B7A' : '1px solid #253045'; return Object.assign({ size: 56 }, r, { style: base + b + (i === 2 ? '; opacity: .45' : '') }); }
+    var P = {
+      recovery: { title: 'Recovery & body', rows: [
+        { label: 'HRV', note: '14:45 · from beats', value: '56', unit: 'ms' },
+        { label: 'Exercise', note: 'today', value: '4', unit: '/120 min', k: 'watch', size: 52 },
+        { label: 'Sleep', note: 'last night', value: '6.2', unit: 'h' }] },
+      cabin: { title: 'Cabin', gear: false, rows: [
+        { label: 'Radiation', note: '6.1 µGy/h', value: '1.0', unit: '×' },
+        { label: 'Pressure', note: 'watch · scrolled to end', value: '985', unit: 'hPa' }] },
+      food: { title: 'Food today', rows: [
+        { label: '08:12', note: 'Breakfast', value: 'Eggs', unit: '', size: 34 },
+        { label: '13:05', note: 'Lunch', value: 'Teriyaki', unit: '', size: 34 },
+        { label: 'Total', note: 'Add meals on the dashboard', value: '333', unit: 'kcal', size: 44 }] }
+    };
+    var p = P[page];
+    return { title: p.title, rows: p.rows.map(row), gear: page === 'cabin' };
+  }
+}
+</script>
+</body>
+</html>

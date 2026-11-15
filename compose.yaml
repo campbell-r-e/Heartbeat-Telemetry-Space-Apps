@@ -1,0 +1,54 @@
+# Runs the onboard server and its Postgres database in Docker on this Mac.
+#   First time: cp .env.example .env, then fill in the two secrets.
+#   Start:      docker compose up -d --build
+#   Logs:       docker compose logs -f server
+#   Stop:       docker compose down        (add -v to also delete the database)
+# The watch reaches it at http://<this Mac's Wi-Fi IP>:4000
+# The database is reachable from this Mac only, at localhost:5432 (user and database
+# "heartbeat", password POSTGRES_PASSWORD in .env), for tools like TablePlus and for running
+# the server outside Docker.
+services:
+  db:
+    image: postgres:18.4
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: heartbeat
+      POSTGRES_DB: heartbeat
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "heartbeat", "-d", "heartbeat"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    image: heartbeat-server:dev
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "4000:4000"
+    environment:
+      PGHOST: db
+      PGUSER: heartbeat
+      PGDATABASE: heartbeat
+      PGPASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      HEARTBEAT_TOKEN: ${HEARTBEAT_TOKEN:?set HEARTBEAT_TOKEN in .env}
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4000/api/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  pgdata:

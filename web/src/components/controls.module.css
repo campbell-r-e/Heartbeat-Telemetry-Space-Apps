@@ -1,0 +1,96 @@
+.button {
+  height: 44px;
+  min-width: 44px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.onPage {
+  background: var(--panel);
+}
+
+.accentButton {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--accent);
+  background: var(--accentbg);
+  color: var(--accent);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accentButton:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.segmented {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  background: var(--panel2);
+  border-radius: var(--radius-control);
+}
+
+.segment {
+  height: 36px;
+  min-width: 52px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.segment[aria-current="true"] {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.feedback {
+  margin: 0;
+  font-size: 14px;
+}
+
+.feedback[data-ok="true"] {
+  color: var(--ok);
+}
+
+.feedback[data-ok="false"] {
+  color: var(--bad);
+}
+
+/* A one-button form whose button and message sit in the surrounding layout: the message wraps
+   onto its own full-width line below the row it belongs to. */
+.inlineForm {
+  display: contents;
+}
+
+.inlineForm .feedback {
+  flex-basis: 100%;
+}

@@ -1,0 +1,787 @@
+{
+  "sources": [
+    {
+      "id": "nasa-iss-menu",
+      "title": "NASA STEMonstration Classroom Connection: Nutrition, Appendix A \"International Space Station Standard Menu Nutritional Data\" (pp. 10-18)",
+      "url": "https://www.nasa.gov/wp-content/uploads/2023/03/stemonstrations-nutrition.pdf"
+    },
+    {
+      "id": "nasa-vitd-2017",
+      "title": "Dlouhy, H. (NASA JSC), \"NASA Food & Nutrition: Updates from Space\", 2017, NTRS 20170001326, slide 45 \"Space Food\" vitamin D (IU) per food item",
+      "url": "https://ntrs.nasa.gov/citations/20170001326"
+    },
+    {
+      "id": "usda-fdc-173920",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 173920: Cereals, oats, instant, fortified, maple and brown sugar, dry",
+      "url": "https://fdc.nal.usda.gov/food-details/173920/nutrients"
+    },
+    {
+      "id": "usda-fdc-174578",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 174578: Pork sausage, link/patty, cooked, pan-fried",
+      "url": "https://fdc.nal.usda.gov/food-details/174578/nutrients"
+    },
+    {
+      "id": "usda-fdc-175048",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 175048: Waffles, plain, frozen, ready -to-heat, toasted",
+      "url": "https://fdc.nal.usda.gov/food-details/175048/nutrients"
+    },
+    {
+      "id": "usda-fdc-170611",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 170611: Beef, brisket, whole, separable lean and fat, trimmed to 0\" fat, all grades, cooked, braised",
+      "url": "https://fdc.nal.usda.gov/food-details/170611/nutrients"
+    },
+    {
+      "id": "usda-fdc-168610",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 168610: Beef, flank, steak, separable lean only, trimmed to 0\" fat, choice, cooked, braised",
+      "url": "https://fdc.nal.usda.gov/food-details/168610/nutrients"
+    },
+    {
+      "id": "usda-fdc-171477",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 171477: Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+      "url": "https://fdc.nal.usda.gov/food-details/171477/nutrients"
+    },
+    {
+      "id": "usda-fdc-172114",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 172114: Lasagna with meat sauce, frozen, prepared",
+      "url": "https://fdc.nal.usda.gov/food-details/172114/nutrients"
+    },
+    {
+      "id": "usda-fdc-171971",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 171971: Crustaceans, shrimp, mixed species, cooked, moist heat (may contain additives to retain moisture)",
+      "url": "https://fdc.nal.usda.gov/food-details/171971/nutrients"
+    },
+    {
+      "id": "usda-fdc-169769",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 169769: Macaroni and cheese, box mix with cheese sauce, unprepared",
+      "url": "https://fdc.nal.usda.gov/food-details/169769/nutrients"
+    },
+    {
+      "id": "usda-fdc-169141",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 169141: Beans, snap, green, cooked, boiled, drained, without salt",
+      "url": "https://fdc.nal.usda.gov/food-details/169141/nutrients"
+    },
+    {
+      "id": "usda-fdc-170447",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 170447: Potatoes, au gratin, dry mix, unprepared",
+      "url": "https://fdc.nal.usda.gov/food-details/170447/nutrients"
+    },
+    {
+      "id": "usda-fdc-168951",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 168951: Rice and vermicelli mix, rice pilaf flavor, unprepared",
+      "url": "https://fdc.nal.usda.gov/food-details/168951/nutrients"
+    },
+    {
+      "id": "usda-fdc-167535",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 167535: Tortillas, ready-to-bake or -fry, flour, shelf stable",
+      "url": "https://fdc.nal.usda.gov/food-details/167535/nutrients"
+    },
+    {
+      "id": "usda-fdc-170567",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 170567: Nuts, almonds",
+      "url": "https://fdc.nal.usda.gov/food-details/170567/nutrients"
+    },
+    {
+      "id": "usda-fdc-170571",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 170571: Nuts, cashew nuts, dry roasted, without salt added",
+      "url": "https://fdc.nal.usda.gov/food-details/170571/nutrients"
+    },
+    {
+      "id": "usda-fdc-173941",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 173941: Apricots, dried, sulfured, uncooked",
+      "url": "https://fdc.nal.usda.gov/food-details/173941/nutrients"
+    },
+    {
+      "id": "usda-fdc-172713",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 172713: Cookies, brownies, commercially prepared",
+      "url": "https://fdc.nal.usda.gov/food-details/172713/nutrients"
+    },
+    {
+      "id": "usda-fdc-174967",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 174967: Cookies, shortbread, commercially prepared, plain",
+      "url": "https://fdc.nal.usda.gov/food-details/174967/nutrients"
+    },
+    {
+      "id": "usda-fdc-171893",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 171893: Beverages, coffee, instant, regular, powder",
+      "url": "https://fdc.nal.usda.gov/food-details/171893/nutrients"
+    },
+    {
+      "id": "usda-fdc-174122",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 174122: Beverages, Cocoa mix, powder",
+      "url": "https://fdc.nal.usda.gov/food-details/174122/nutrients"
+    },
+    {
+      "id": "usda-fdc-174858",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 174858: Beverages, Lemonade, powder",
+      "url": "https://fdc.nal.usda.gov/food-details/174858/nutrients"
+    },
+    {
+      "id": "usda-fdc-173235",
+      "title": "USDA FoodData Central SR Legacy, FDC ID 173235: Beverages, orange-flavor drink, breakfast type, powder",
+      "url": "https://fdc.nal.usda.gov/food-details/173235/nutrients"
+    }
+  ],
+  "notes": "kcal, protein, sodium, calcium, serving mass and food type for every item come from NASA's ISS Standard Menu Nutritional Data table (Appendix A of the NASA STEMonstration 'Nutrition' educator guide; PDF uploaded to nasa.gov in March 2023, table itself undated). Values were transcribed by hand from the rendered PDF pages. Category (Breakfast/Entrées/Sides/Snacks/Drinks) is our own grouping; NASA's table is alphabetical. For Rehydratable and Beverage items the NASA mass is small (e.g. coffee 1.5 g), consistent with dry weight as packaged before water is added; the table itself only says 'Mass - in grams'. NASA's table has no vitamin D column. Vitamin D comes from a 2017 NASA JSC presentation (NTRS 20170001326) where listed (8 items; IU converted at 40 IU = 1 µg; the slide gives one value per item and compares the menu total to a 600 IU/day requirement, so values are read as per serving), otherwise from USDA FoodData Central SR Legacy (April 2018 release, read from the official FDC CSV download because the DEMO_KEY API hit its rate limit). USDA values are per 100 g and were scaled to the NASA serving: by mass where the USDA food is in the same state as the NASA item (ready-to-eat, or a dry mix/powder for dry NASA items), or by energy (NASA kcal ÷ USDA kcal per 100 g) where the NASA item is dry but the USDA match is prepared (shrimp cocktail, green beans). A USDA vitamin D of 0 is the database's reported value for an Earth analog, not a measurement of the space food. NASA has noted that processing and storage reduce some vitamins, so actual flight values may be lower.",
+  "foods": [
+    {
+      "id": "scrambled-eggs",
+      "name": "Scrambled Eggs",
+      "category": "Breakfast",
+      "foodType": "Rehydratable",
+      "serving": "34.5 g as packaged (dry, before rehydration)",
+      "kcal": 183,
+      "proteinG": 13,
+      "calciumMg": 128,
+      "vitaminDUg": 1.6,
+      "sodiumMg": 333.3,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "nasa-vitd-2017"
+      },
+      "note": "Vitamin D: NASA lists 64 IU for \"Scrambled Eggs\"; converted at 40 IU = 1 µg."
+    },
+    {
+      "id": "oatmeal-brown-sugar",
+      "name": "Oatmeal with Brown Sugar",
+      "category": "Breakfast",
+      "foodType": "Rehydratable",
+      "serving": "46.1 g as packaged (dry, before rehydration)",
+      "kcal": 170,
+      "proteinG": 5,
+      "calciumMg": 134,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 233,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-173920"
+      },
+      "note": "Vitamin D from USDA FDC 173920 (Cereals, oats, instant, fortified, maple and brown sugar, dry): 0 µg/100 g × 46.1 g / 100."
+    },
+    {
+      "id": "granola-raisins",
+      "name": "Granola with Raisins",
+      "category": "Breakfast",
+      "foodType": "Rehydratable",
+      "serving": "80 g as packaged (dry, before rehydration)",
+      "kcal": 315,
+      "proteinG": 10,
+      "calciumMg": 144,
+      "vitaminDUg": 1.1,
+      "sodiumMg": 181,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "nasa-vitd-2017"
+      },
+      "note": "Vitamin D: NASA lists 44 IU for \"Granola w/Raisins\"; converted at 40 IU = 1 µg."
+    },
+    {
+      "id": "cornflakes",
+      "name": "Cornflakes",
+      "category": "Breakfast",
+      "foodType": "Rehydratable",
+      "serving": "40 g as packaged (dry, before rehydration)",
+      "kcal": 147.6,
+      "proteinG": 4.5,
+      "calciumMg": 110.7,
+      "vitaminDUg": 2.2,
+      "sodiumMg": 210.7,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "nasa-vitd-2017"
+      },
+      "note": "Vitamin D: NASA lists 88 IU for \"Cornflakes\"; converted at 40 IU = 1 µg."
+    },
+    {
+      "id": "breakfast-sausage-links",
+      "name": "Breakfast Sausage Links",
+      "category": "Breakfast",
+      "foodType": "Irradiated",
+      "serving": "70 g",
+      "kcal": 155,
+      "proteinG": 11.71,
+      "calciumMg": 8.61,
+      "vitaminDUg": 0.98,
+      "sodiumMg": 614.6,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-174578"
+      },
+      "note": "Vitamin D from USDA FDC 174578 (Pork sausage, link/patty, cooked, pan-fried): 1.4 µg/100 g × 70 g / 100."
+    },
+    {
+      "id": "waffles",
+      "name": "Waffles",
+      "category": "Breakfast",
+      "foodType": "Natural form",
+      "serving": "43 g",
+      "kcal": 208,
+      "proteinG": 3,
+      "calciumMg": 18,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 100,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-175048"
+      },
+      "note": "Vitamin D from USDA FDC 175048 (Waffles, plain, frozen, ready -to-heat, toasted): 0 µg/100 g × 43 g / 100."
+    },
+    {
+      "id": "vegetable-quiche",
+      "name": "Vegetable Quiche",
+      "category": "Breakfast",
+      "foodType": "Rehydratable",
+      "serving": "50 g as packaged (dry, before rehydration)",
+      "kcal": 271,
+      "proteinG": 15.5,
+      "calciumMg": 339,
+      "vitaminDUg": 0.7,
+      "sodiumMg": 462,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "nasa-vitd-2017"
+      },
+      "note": "Vitamin D: NASA lists 28 IU for \"Vegetable Quiche\"; converted at 40 IU = 1 µg."
+    },
+    {
+      "id": "bbq-beef-brisket",
+      "name": "Barbecued Beef Brisket",
+      "category": "Entrées",
+      "foodType": "Irradiated",
+      "serving": "118 g",
+      "kcal": 231,
+      "proteinG": 29,
+      "calciumMg": 12,
+      "vitaminDUg": 0.35,
+      "sodiumMg": 514,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-170611"
+      },
+      "note": "Vitamin D from USDA FDC 170611 (Beef, brisket, whole, separable lean and fat, trimmed to 0\" fat, all grades, cooked, braised): 0.3 µg/100 g × 118 g / 100."
+    },
+    {
+      "id": "beef-fajitas",
+      "name": "Beef Fajitas",
+      "category": "Entrées",
+      "foodType": "Irradiated",
+      "serving": "125 g",
+      "kcal": 187,
+      "proteinG": 31,
+      "calciumMg": 23,
+      "vitaminDUg": 0.25,
+      "sodiumMg": 841,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-168610"
+      },
+      "note": "Vitamin D from USDA FDC 168610 (Beef, flank, steak, separable lean only, trimmed to 0\" fat, choice, cooked, braised): 0.2 µg/100 g × 125 g / 100."
+    },
+    {
+      "id": "chicken-teriyaki",
+      "name": "Chicken Teriyaki",
+      "category": "Entrées",
+      "foodType": "Irradiated",
+      "serving": "120 g",
+      "kcal": 150,
+      "proteinG": 27,
+      "calciumMg": 21,
+      "vitaminDUg": 0.12,
+      "sodiumMg": 1140,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-171477"
+      },
+      "note": "Vitamin D from USDA FDC 171477 (Chicken, broilers or fryers, breast, meat only, cooked, roasted): 0.1 µg/100 g × 120 g / 100."
+    },
+    {
+      "id": "teriyaki-beef-steak",
+      "name": "Teriyaki Beef Steak",
+      "category": "Entrées",
+      "foodType": "Irradiated",
+      "serving": "120 g",
+      "kcal": 234,
+      "proteinG": 39,
+      "calciumMg": 12,
+      "vitaminDUg": 0.9,
+      "sodiumMg": 863,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "nasa-vitd-2017"
+      },
+      "note": "Vitamin D: NASA lists 36 IU for \"Teriyaki Beef\"; converted at 40 IU = 1 µg."
+    },
+    {
+      "id": "salmon",
+      "name": "Salmon",
+      "category": "Entrées",
+      "foodType": "Thermostabilized",
+      "serving": "74 g",
+      "kcal": 85,
+      "proteinG": 16,
+      "calciumMg": 22,
+      "vitaminDUg": 9.9,
+      "sodiumMg": 372,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "nasa-vitd-2017"
+      },
+      "note": "Vitamin D: NASA lists 396 IU for \"Salmon\"; converted at 40 IU = 1 µg."
+    },
+    {
+      "id": "tuna",
+      "name": "Tuna",
+      "category": "Entrées",
+      "foodType": "Thermostabilized",
+      "serving": "74 g",
+      "kcal": 79,
+      "proteinG": 17,
+      "calciumMg": 3,
+      "vitaminDUg": 3.8,
+      "sodiumMg": 118,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "nasa-vitd-2017"
+      },
+      "note": "Vitamin D: NASA lists 152 IU for \"Tuna\"; converted at 40 IU = 1 µg."
+    },
+    {
+      "id": "lasagna-meat",
+      "name": "Lasagna with Meat",
+      "category": "Entrées",
+      "foodType": "Thermostabilized",
+      "serving": "227 g",
+      "kcal": 202,
+      "proteinG": 20,
+      "calciumMg": 204,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 788,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-172114"
+      },
+      "note": "Vitamin D from USDA FDC 172114 (Lasagna with meat sauce, frozen, prepared): 0 µg/100 g × 227 g / 100."
+    },
+    {
+      "id": "shrimp-cocktail",
+      "name": "Shrimp Cocktail",
+      "category": "Entrées",
+      "foodType": "Rehydratable",
+      "serving": "35 g as packaged (dry, before rehydration)",
+      "kcal": 117.95,
+      "proteinG": 14.14,
+      "calciumMg": 50.75,
+      "vitaminDUg": 0.1,
+      "sodiumMg": 705.25,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-171971"
+      },
+      "note": "Vitamin D from USDA FDC 171971 (Crustaceans, shrimp, mixed species, cooked, moist heat (may contain additives to retain moisture)): energy-matched: NASA 117.95 kcal ÷ USDA 119 kcal/100 g = 99.1 g equivalent; 0.1 µg/100 g × 99.1 g / 100."
+    },
+    {
+      "id": "macaroni-cheese",
+      "name": "Macaroni & Cheese",
+      "category": "Sides",
+      "foodType": "Rehydratable",
+      "serving": "40 g as packaged (dry, before rehydration)",
+      "kcal": 194,
+      "proteinG": 8.5,
+      "calciumMg": 152,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 643.6,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-169769"
+      },
+      "note": "Vitamin D from USDA FDC 169769 (Macaroni and cheese, box mix with cheese sauce, unprepared): 0 µg/100 g × 40 g / 100."
+    },
+    {
+      "id": "green-beans-mushrooms",
+      "name": "Green Beans with Mushrooms",
+      "category": "Sides",
+      "foodType": "Rehydratable",
+      "serving": "10 g as packaged (dry, before rehydration)",
+      "kcal": 22,
+      "proteinG": 1.8,
+      "calciumMg": 40,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 178,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-169141"
+      },
+      "note": "Vitamin D from USDA FDC 169141 (Beans, snap, green, cooked, boiled, drained, without salt): energy-matched: NASA 22 kcal ÷ USDA 35 kcal/100 g = 62.9 g equivalent; 0 µg/100 g × 62.9 g / 100."
+    },
+    {
+      "id": "potatoes-au-gratin",
+      "name": "Potatoes au Gratin",
+      "category": "Sides",
+      "foodType": "Rehydratable",
+      "serving": "30 g as packaged (dry, before rehydration)",
+      "kcal": 141,
+      "proteinG": 4,
+      "calciumMg": 109,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 606,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-170447"
+      },
+      "note": "Vitamin D from USDA FDC 170447 (Potatoes, au gratin, dry mix, unprepared): 0 µg/100 g × 30 g / 100."
+    },
+    {
+      "id": "rice-pilaf",
+      "name": "Rice Pilaf",
+      "category": "Sides",
+      "foodType": "Rehydratable",
+      "serving": "25 g as packaged (dry, before rehydration)",
+      "kcal": 103,
+      "proteinG": 2,
+      "calciumMg": 20,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 369,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-168951"
+      },
+      "note": "Vitamin D from USDA FDC 168951 (Rice and vermicelli mix, rice pilaf flavor, unprepared): 0 µg/100 g × 25 g / 100."
+    },
+    {
+      "id": "tortillas",
+      "name": "Tortillas",
+      "category": "Sides",
+      "foodType": "Natural form",
+      "serving": "60 g",
+      "kcal": 189,
+      "proteinG": 5,
+      "calciumMg": 74,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 421,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-167535"
+      },
+      "note": "Vitamin D from USDA FDC 167535 (Tortillas, ready-to-bake or -fry, flour, shelf stable): 0 µg/100 g × 60 g / 100."
+    },
+    {
+      "id": "almonds",
+      "name": "Almonds",
+      "category": "Snacks",
+      "foodType": "Natural form",
+      "serving": "45 g",
+      "kcal": 243,
+      "proteinG": 11,
+      "calciumMg": 126,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 1.67,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-170567"
+      },
+      "note": "Vitamin D from USDA FDC 170567 (Nuts, almonds): 0 µg/100 g × 45 g / 100."
+    },
+    {
+      "id": "cashews",
+      "name": "Cashews",
+      "category": "Snacks",
+      "foodType": "Natural form",
+      "serving": "45 g",
+      "kcal": 265,
+      "proteinG": 10,
+      "calciumMg": 16,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 4.8,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-170571"
+      },
+      "note": "Vitamin D from USDA FDC 170571 (Nuts, cashew nuts, dry roasted, without salt added): 0 µg/100 g × 45 g / 100."
+    },
+    {
+      "id": "dried-apricots",
+      "name": "Dried Apricots",
+      "category": "Snacks",
+      "foodType": "Intermediate moisture",
+      "serving": "62 g",
+      "kcal": 156,
+      "proteinG": 3.7,
+      "calciumMg": 26,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 13,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-173941"
+      },
+      "note": "Vitamin D from USDA FDC 173941 (Apricots, dried, sulfured, uncooked): 0 µg/100 g × 62 g / 100."
+    },
+    {
+      "id": "brownie",
+      "name": "Brownie",
+      "category": "Snacks",
+      "foodType": "Natural form",
+      "serving": "61 g",
+      "kcal": 268,
+      "proteinG": 2,
+      "calciumMg": 14.9,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 116,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-172713"
+      },
+      "note": "Vitamin D from USDA FDC 172713 (Cookies, brownies, commercially prepared): 0 µg/100 g × 61 g / 100."
+    },
+    {
+      "id": "shortbread-cookies",
+      "name": "Shortbread Cookies",
+      "category": "Snacks",
+      "foodType": "Natural form",
+      "serving": "29 g",
+      "kcal": 139,
+      "proteinG": 1.4,
+      "calciumMg": 3,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 111,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-174967"
+      },
+      "note": "Vitamin D from USDA FDC 174967 (Cookies, shortbread, commercially prepared, plain): 0 µg/100 g × 29 g / 100."
+    },
+    {
+      "id": "kona-coffee-black",
+      "name": "Kona Coffee, Black",
+      "category": "Drinks",
+      "foodType": "Beverage",
+      "serving": "1.5 g as packaged (dry, before rehydration)",
+      "kcal": 4.3,
+      "proteinG": 0.2,
+      "calciumMg": 2.4,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 0.2,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-171893"
+      },
+      "note": "Vitamin D from USDA FDC 171893 (Beverages, coffee, instant, regular, powder): 0 µg/100 g × 1.5 g / 100."
+    },
+    {
+      "id": "cocoa",
+      "name": "Cocoa",
+      "category": "Drinks",
+      "foodType": "Beverage",
+      "serving": "50.5 g as packaged (dry, before rehydration)",
+      "kcal": 165.6,
+      "proteinG": 2.7,
+      "calciumMg": 51.3,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 152.2,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-174122"
+      },
+      "note": "Vitamin D from USDA FDC 174122 (Beverages, Cocoa mix, powder): 0 µg/100 g × 50.5 g / 100."
+    },
+    {
+      "id": "lemonade",
+      "name": "Lemonade",
+      "category": "Drinks",
+      "foodType": "Beverage",
+      "serving": "21 g as packaged (dry, before rehydration)",
+      "kcal": 81,
+      "proteinG": 0,
+      "calciumMg": 3.3,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 30,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-174858"
+      },
+      "note": "Vitamin D from USDA FDC 174858 (Beverages, Lemonade, powder): 0 µg/100 g × 21 g / 100."
+    },
+    {
+      "id": "orange-drink",
+      "name": "Orange Drink",
+      "category": "Drinks",
+      "foodType": "Beverage",
+      "serving": "11.9 g as packaged (dry, before rehydration)",
+      "kcal": 43,
+      "proteinG": 0.02,
+      "calciumMg": 107.5,
+      "vitaminDUg": 0.0,
+      "sodiumMg": 2.4,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "usda-fdc-173235"
+      },
+      "note": "Vitamin D from USDA FDC 173235 (Beverages, orange-flavor drink, breakfast type, powder): 0 µg/100 g × 11.9 g / 100."
+    },
+    {
+      "id": "vanilla-breakfast-drink",
+      "name": "Vanilla Breakfast Drink",
+      "category": "Drinks",
+      "foodType": "Beverage",
+      "serving": "38.8 g as packaged (dry, before rehydration)",
+      "kcal": 136,
+      "proteinG": 7.5,
+      "calciumMg": 681,
+      "vitaminDUg": 2.9,
+      "sodiumMg": 168.3,
+      "sourceByField": {
+        "serving": "nasa-iss-menu",
+        "foodType": "nasa-iss-menu",
+        "kcal": "nasa-iss-menu",
+        "proteinG": "nasa-iss-menu",
+        "calciumMg": "nasa-iss-menu",
+        "sodiumMg": "nasa-iss-menu",
+        "vitaminDUg": "nasa-vitd-2017"
+      },
+      "note": "Vitamin D: NASA lists 116 IU for \"Breakfast Drink\"; converted at 40 IU = 1 µg. NASA's item is the generic \"Breakfast Drink\" (flavor not stated)."
+    }
+  ]
+}

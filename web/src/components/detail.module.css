@@ -1,0 +1,250 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.readouts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.readout {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.readout dd {
+  margin: 0;
+}
+
+.readoutValue {
+  font-family: var(--font-mono);
+  font-size: 24px;
+}
+
+.readoutCaption {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.panelHead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.history {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.historyItem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.historyWhen {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  min-width: 120px;
+}
+
+.learnTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.learn {
+  margin: 0;
+}
+
+.learn dt {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.learn dd {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.requirement {
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: var(--panel2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.sourceList {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+.doseRow {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.totalLine {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.totalValue {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--panel2);
+  overflow: hidden;
+}
+
+.barFillOk {
+  height: 100%;
+  background: var(--ok);
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.pending {
+  margin: 0;
+  color: var(--muted);
+}
+
+.yesterdayNote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.totalNotes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  font-size: 13px;
+}
+
+.limits {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.limit {
+  display: flex;
+  gap: 8px;
+}
+
+.limitSymbol {
+  flex: none;
+  width: 1em;
+  color: var(--tone);
+}
+
+/* The bar plus a tick for the band's other bound (sodium's minimum on its limit bar). */
+.barTrack {
+  position: relative;
+}
+
+.barTick {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--text);
+  border-radius: 1px;
+}

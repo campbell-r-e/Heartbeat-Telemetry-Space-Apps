@@ -1,0 +1,16 @@
+{
+  "name": "heartbeat-telemetry",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev -w server",
+    "dev:web": "npm run dev -w web",
+    "demo:reset": "npm run demo:reset -w server",
+    "demo:radiation-forecast": "npm run demo:radiation-forecast -w server --",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w server && npm run typecheck -w web"
+  }
+}

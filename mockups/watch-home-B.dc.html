@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch home B: six area dots</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 520px; height: 520px; display: flex; align-items: center; justify-content: center; background: #1A1F29; font-family: Inter, sans-serif; color: #E8EDF6">
+<div style="position: relative; width: 450px; height: 450px; border-radius: 50%; background: #000; box-shadow: 0 0 0 14px #2B313C, 0 0 0 16px #3A4250; overflow: hidden">
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="6">
+<div style="{{d.style}}">
+<span style="font-size: 22px; line-height: 1">{{d.sym}}</span>
+<span style="font-size: 13px; font-weight: 600; color: #E8EDF6">{{d.name}}</span>
+</div>
+</sc-for>
+<div style="position: absolute; left: 115px; top: 135px; width: 220px; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 20px; color: #E8EDF6">14:05</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #9AA6BA">Sat, Nov 14 <svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><rect x="0.5" y="0.5" width="18" height="11" rx="2" fill="none" stroke="#9AA6BA"></rect><rect x="2" y="2" width="10.5" height="8" rx="1" fill="#3DDC97"></rect><rect x="19.5" y="3.5" width="2" height="5" rx="1" fill="#9AA6BA"></rect></svg> 64%</span>
+<span style="font-size: 26px; font-weight: 700; color: #FF6B7A">■ 1 Alert</span>
+<span style="font-size: 20px; font-weight: 600; color: #FFC24B">▲ 2 Watch</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 15px; color: #7FB4FF; margin-top: 4px">1,240 pts · 9d</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":520,"height":520}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var C = { normal: ['#3DDC97', 'rgba(61,220,151,.16)', '●'], watch: ['#FFC24B', 'rgba(255,194,75,.18)', '▲'], alert: ['#FF6B7A', 'rgba(255,107,122,.22)', '■'] };
+    var raw = [
+      { name: 'Vitals', k: 'normal', left: 187, top: 22 },
+      { name: 'Radiation', k: 'alert', left: 330, top: 104 },
+      { name: 'Gravity', k: 'watch', left: 330, top: 270 },
+      { name: 'Cabin', k: 'normal', left: 187, top: 352 },
+      { name: 'Food', k: 'normal', left: 44, top: 270 },
+      { name: 'Mind', k: 'watch', left: 44, top: 104 }
+    ];
+    var dots = raw.map(function (d) {
+      var c = C[d.k];
+      return { name: d.name, sym: c[2], style: 'position: absolute; left: ' + d.left + 'px; top: ' + d.top + 'px; width: 76px; height: 76px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; background: ' + c[1] + '; border: ' + (d.k === 'alert' ? '4px' : '2px') + ' solid ' + c[0] + '; color: ' + c[0] + '; box-sizing: border-box' };
+    });
+    return { dots: dots };
+  }
+}
+</script>
+</body>
+</html>

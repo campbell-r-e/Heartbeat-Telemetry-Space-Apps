@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reminder_channel">Measurement reminders</string>
+    <string name="collecting_channel">Health collection</string>
+    <string name="collecting_title">Heartbeat is collecting readings</string>
+    <string name="notes_channel">Notes from the flight surgeon</string>
+    <string name="note_title">Note from Flight Surgeon</string>
+    <string name="note_open">Open</string>
+    <string name="badges_channel">Badges</string>
+    <string name="badge_earned">Badge earned: %1$s</string>
+</resources>

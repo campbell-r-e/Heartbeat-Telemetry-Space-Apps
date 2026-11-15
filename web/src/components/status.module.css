@@ -1,0 +1,105 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  background: var(--tonebg);
+  color: var(--tone);
+  border: 1px solid var(--tone);
+}
+
+.small {
+  padding: 3px 8px;
+  font-size: 11px;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 20px;
+  background: var(--tonebg);
+  border: 1px solid var(--tone);
+  border-radius: var(--radius-panel);
+}
+
+.banner[data-tone="bad"] {
+  border-width: 2px;
+}
+
+.bannerHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--tone);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bannerTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 17px;
+  flex: 1 1 260px;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.message dd {
+  margin: 0;
+}
+
+.problemNotice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 16px;
+  background: var(--tonebg);
+  border: 1px solid var(--tone);
+  border-radius: var(--radius-panel);
+  font-size: 14px;
+}
+
+.reason {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* The red banner's relay tag: "Alert sent to flight surgeon · arrives in m:ss" (SPEC §9.1). */
+.relayTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--tone);
+  color: var(--tone);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}

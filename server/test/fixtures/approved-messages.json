@@ -1,0 +1,296 @@
+{
+  "spo2-watch": {
+    "title": "Blood oxygen low",
+    "what": "Your blood oxygen is {spo2Pct}%, below the normal {setting:spo2.watchBelowPct}%.",
+    "why": "A low reading can be a real drop in blood oxygen, or it can come from the watch fitting loosely.",
+    "do": "Sit still, tighten the watch, and measure again in 5 minutes."
+  },
+  "spo2-alert": {
+    "title": "Blood oxygen very low",
+    "what": "Your blood oxygen is {spo2Pct}%, below {setting:spo2.alertBelowPct}%.",
+    "why": "Blood oxygen this low means the body may not be getting enough oxygen.",
+    "do": "Stop what you are doing and measure again now. An alert has been sent to the flight surgeon."
+  },
+  "heart-rate-low-alert": {
+    "title": "Heart rate very low",
+    "what": "Your heart rate is {heartRateBpm} bpm, below {setting:heartRate.alertBelowBpm} bpm.",
+    "why": "A heart rate this low is outside the range this app treats as safe, and it needs a check.",
+    "do": "Take an ECG now. An alert has been sent to the flight surgeon."
+  },
+  "heart-rate-high-alert": {
+    "title": "Heart rate very high",
+    "what": "Your heart rate is {heartRateBpm} bpm, above {setting:heartRate.alertAboveBpm} bpm.",
+    "why": "A heart rate this high can happen during very hard exercise; at any other time it needs a check.",
+    "do": "Stop and rest, then take an ECG. An alert has been sent to the flight surgeon."
+  },
+  "heart-rate-above-baseline-watch": {
+    "title": "Heart rate above your normal",
+    "what": "Your heart rate is {heartRateBpm} bpm, {heartRateAboveBaselineSd} standard deviations above your baseline.",
+    "why": "Your heart rate is well above your usual range. Exercise and other activity raise it; if you have been resting, it is worth a check.",
+    "do": "Hydrate, rest 10 minutes, then recheck."
+  },
+  "heart-rate-above-baseline-alert": {
+    "title": "Heart rate far above your normal",
+    "what": "Your heart rate is {heartRateBpm} bpm, {heartRateAboveBaselineSd} standard deviations above your baseline.",
+    "why": "A heart rate this far above your normal needs a check, unless you are exercising hard.",
+    "do": "Stop and rest, then take an ECG. An alert has been sent to the flight surgeon."
+  },
+  "skin-temp-off-baseline-watch": {
+    "title": "Skin temperature off your normal",
+    "what": "Your skin temperature is {skinTempAwayFromBaselineSd} standard deviations away from your baseline.",
+    "why": "Skin temperature changes with the cabin temperature, activity and the watch fit; a lasting change is worth watching.",
+    "do": "Recheck in 30 minutes, and tell the flight surgeon if you feel unwell."
+  },
+  "skin-temp-off-baseline-alert": {
+    "title": "Skin temperature far off your normal",
+    "what": "Your skin temperature is {skinTempAwayFromBaselineSd} standard deviations away from your baseline.",
+    "why": "A change this large from your normal needs a check.",
+    "do": "Rest and recheck now. An alert has been sent to the flight surgeon."
+  },
+  "hrv-below-baseline-watch": {
+    "title": "HRV below your normal",
+    "what": "Your heart rate variability is {hrvBelowBaselineSd} standard deviations below your baseline.",
+    "why": "Your HRV is lower than usual for you. Sleep loss and heavy workloads are common stressors in spaceflight.",
+    "do": "Take a short break, and aim for a full sleep period tonight."
+  },
+  "hrv-below-baseline-alert": {
+    "title": "HRV far below your normal",
+    "what": "Your heart rate variability is {hrvBelowBaselineSd} standard deviations below your baseline.",
+    "why": "HRV this far below your normal needs a check.",
+    "do": "Rest now. An alert has been sent to the flight surgeon."
+  },
+  "radiation-solar-event-watch": {
+    "title": "Radiation dose rising",
+    "what": "The ship's radiation dose over the last 24 hours is {radiationDailyDoseMultiple}× the average of the 7 days before ({radiationDailyDoseUGy} vs. {radiationPreviousAverageUGy} µGy).",
+    "why": "A rise like this can be the start of a solar particle event. NASA limits a solar event's dose to under 250 mSv [V1 4031].",
+    "do": "No action is needed yet. Watch for an alert, and follow your crew's radiation plan if one comes."
+  },
+  "radiation-solar-event-alert": {
+    "title": "Radiation dose spike",
+    "what": "The ship's radiation dose over the last 24 hours is {radiationDailyDoseMultiple}× the average of the 7 days before ({radiationDailyDoseUGy} vs. {radiationPreviousAverageUGy} µGy). This applies to the whole crew.",
+    "why": "A rise this large can be a sign of a solar particle event. NASA requires the crew and operations teams to be alerted when exposure rates exceed set thresholds [V2 6164].",
+    "do": "Follow your mission's planned radiation sheltering steps and any instructions from the ground. An alert has been sent to the flight surgeon."
+  },
+  "radiation-career-watch": {
+    "title": "Career radiation dose high",
+    "what": "Your career radiation dose equivalent (estimate) is {radiationCareerDoseMSv} mSv, {radiationCareerPercentOfLimit}% of NASA's {setting:radiation.careerLimitMSv} mSv career limit (from the ship's sensor this mission).",
+    "why": "Career dose adds up over every mission and raises long-term cancer risk. NASA caps it at {setting:radiation.careerLimitMSv} mSv for all ages and sexes [V1 4030].",
+    "do": "Talk with the flight surgeon about limiting further exposure on this mission."
+  },
+  "radiation-career-alert": {
+    "title": "Career radiation limit projected",
+    "what": "At the average dose rate so far, your career radiation dose equivalent (estimate) is projected to reach NASA's {setting:radiation.careerLimitMSv} mSv limit by the end of the {setting:mission.plannedLengthDays}-day mission.",
+    "why": "NASA caps career effective dose at {setting:radiation.careerLimitMSv} mSv [V1 4030].",
+    "do": "An alert has been sent to the flight surgeon. Talk with them about your exposure."
+  },
+  "gravity-exercise-goal-met": {
+    "title": "Exercise goal met",
+    "what": "You have {exerciseMinutesToday} exercise minutes today, meeting the {setting:exercise.dailyGoalMinutes}-minute daily goal.",
+    "why": "Daily exercise protects bones and muscles in microgravity.",
+    "do": "Keep it up tomorrow."
+  },
+  "gravity-exercise-watch": {
+    "title": "Exercise behind pace",
+    "what": "You have {exerciseMinutesToday} exercise minutes today, under {setting:gravity.exerciseWatchBelowMinutes} this late in the day.",
+    "why": "Without gravity, bones and muscles weaken; all astronauts exercise during their missions to counter this.",
+    "do": "Fit in an exercise session before your sleep period."
+  },
+  "co2-one-hour-alert": {
+    "title": "CO₂ above limit",
+    "what": "Cabin CO₂ averaged {co2OneHourAverageMmHg} mmHg over the last hour, above NASA's {setting:co2.oneHourAlertAboveMmHg} mmHg limit.",
+    "why": "Without enough airflow, CO₂ can collect in pockets, and higher CO₂ is linked to headaches in crews.",
+    "do": "Tell the crew so CO₂ removal can be checked, and tell the flight surgeon if you get a headache. An alert has been sent to the flight surgeon."
+  },
+  "co2-one-hour-watch": {
+    "title": "CO₂ near limit",
+    "what": "Cabin CO₂ averaged {co2OneHourAverageMmHg} mmHg over the last hour, close to NASA's {setting:co2.oneHourAlertAboveMmHg} mmHg limit.",
+    "why": "NASA guidance links a 7-day average below {setting:co2.sevenDayWatchFromMmHg} mmHg to headache risk under 1%; this hour is above that level.",
+    "do": "Tell the crew if you get a headache, and recheck in an hour."
+  },
+  "co2-seven-day-watch": {
+    "title": "CO₂ high this week",
+    "what": "Cabin CO₂ has averaged {co2SevenDayAverageMmHg} mmHg over the last 7 days.",
+    "why": "NASA advises a 7-day average below {setting:co2.sevenDayWatchFromMmHg} mmHg to hold headache risk under 1%.",
+    "do": "Report the trend to the crew so CO₂ removal can be checked."
+  },
+  "pressure-low-alert": {
+    "title": "Cabin pressure too low",
+    "what": "Cabin pressure at your watch reads {pressureKPa} kPa, at or below NASA's {setting:pressure.minExclusiveKPa} kPa minimum.",
+    "why": "Pressure this low risks hypoxia and decompression sickness.",
+    "do": "Check the ship's own cabin pressure display and tell the crew right away. An alert has been sent to the flight surgeon."
+  },
+  "pressure-high-alert": {
+    "title": "Cabin pressure too high",
+    "what": "Cabin pressure at your watch reads {pressureKPa} kPa, above NASA's {setting:pressure.maxKPa} kPa maximum.",
+    "why": "NASA sets {setting:pressure.maxKPa} kPa as the upper limit for indefinite exposure [V2 6006].",
+    "do": "Report it to the crew so the pressure can be checked. An alert has been sent to the flight surgeon."
+  },
+  "pressure-shift-watch": {
+    "title": "Cabin pressure shift",
+    "what": "Cabin pressure at your watch reads {pressureKPa} kPa, {pressureShiftKPa} kPa away from its average over the last 24 hours.",
+    "why": "A shift like this can come from a real change in cabin pressure or from the watch sensor.",
+    "do": "Recheck in a few minutes and report it to the crew if it holds."
+  },
+  "cabin-comfort-zone-watch": {
+    "title": "Cabin air outside comfort zone",
+    "what": "Cabin air is {cabinTempC} °C at {cabinHumidityPct}% humidity, outside NASA's temperature and humidity zone.",
+    "why": "NASA limits temperature and humidity together; outside the zone crews can have dry or irritated airways, rashes, thermal discomfort or lower performance [V2 6012].",
+    "do": "Tell the crew so the cabin air can be checked, and tell the flight surgeon if you feel unwell."
+  },
+  "cabin-comfort-zone-alert": {
+    "title": "Cabin air far outside comfort zone",
+    "what": "Cabin air is {cabinTempC} °C at {cabinHumidityPct}% humidity, more than {setting:cabinZone.alertMarginC} °C or {setting:cabinZone.alertMarginRhPct}% humidity outside NASA's zone.",
+    "why": "Far outside the zone, thermal discomfort and lower performance are more likely [V2 6012].",
+    "do": "Report it to the crew so the cabin air can be fixed. An alert has been sent to the flight surgeon."
+  },
+  "noise-sleep-watch": {
+    "title": "Noisy sleep period",
+    "what": "Noise during the sleep period averaged {noiseSleepLevelDba} dBA, above the {setting:noise.sleepWatchAboveDba} dBA sleep limit.",
+    "why": "Noise above this level can disturb sleep; an ISS flight rule sets sleep stations at {setting:noise.sleepWatchAboveDba} dBA or below.",
+    "do": "Close your crew quarters and use earplugs; report loud equipment."
+  },
+  "noise-awake-watch": {
+    "title": "Noisy work area",
+    "what": "Noise while awake averaged {noiseAwakeLevelDba} dBA, above {setting:noise.awakeWatchAboveDba} dBA, our rough dBA stand-in for NASA's NC-50 work-area limit.",
+    "why": "Constant noise can make it harder to talk and work, and can cause irritation and headaches.",
+    "do": "Wear hearing protection near loud equipment and report it."
+  },
+  "noise-day-alert": {
+    "title": "Daily noise over limit",
+    "what": "Noise over the last 24 hours averaged {noiseDayLevelDba} dBA, above NASA's {setting:noise.dayAlertAboveDba} dBA daily limit.",
+    "why": "A daily noise dose this high can damage hearing [V2 6115].",
+    "do": "Wear hearing protection now. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-energy-low-alert": {
+    "title": "Energy intake low yesterday",
+    "what": "Yesterday you logged {energyDayKcal} kcal, {energyDayPctOfEer}% of your estimated energy requirement ({eerKcal} kcal), below the daily target of {setting:nutrition.energyWatchBelowPct}–{setting:nutrition.energyWatchAbovePct}%.",
+    "why": "Eating less than the body needs leads to loss of body mass, mostly muscle and fat, which has been common in spaceflight.",
+    "do": "Eat full meals and add snacks today. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-energy-low-watch": {
+    "title": "Energy intake low yesterday",
+    "what": "Yesterday you logged {energyDayKcal} kcal, {energyDayPctOfEer}% of your estimated energy requirement ({eerKcal} kcal), below the daily target of {setting:nutrition.energyWatchBelowPct}–{setting:nutrition.energyWatchAbovePct}%.",
+    "why": "Eating less than the body needs leads to loss of body mass, mostly muscle and fat, which has been common in spaceflight.",
+    "do": "Eat full meals and add snacks today."
+  },
+  "nutrition-energy-high-watch": {
+    "title": "Energy intake high yesterday",
+    "what": "Yesterday you logged {energyDayKcal} kcal, {energyDayPctOfEer}% of your estimated energy requirement ({eerKcal} kcal), above the daily target of {setting:nutrition.energyWatchBelowPct}–{setting:nutrition.energyWatchAbovePct}%.",
+    "why": "Eating well above your needs over many days leads to weight gain.",
+    "do": "Choose smaller portions today."
+  },
+  "nutrition-energy-high-alert": {
+    "title": "Energy intake high yesterday",
+    "what": "Yesterday you logged {energyDayKcal} kcal, {energyDayPctOfEer}% of your estimated energy requirement ({eerKcal} kcal), above the daily target of {setting:nutrition.energyWatchBelowPct}–{setting:nutrition.energyWatchAbovePct}%.",
+    "why": "Eating well above your needs over many days leads to weight gain.",
+    "do": "Choose smaller portions today. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-protein-low-alert": {
+    "title": "Protein share low yesterday",
+    "what": "Yesterday {proteinDayPctOfKcal}% of your calories came from protein, below the daily target of {setting:nutrition.proteinWatchBelowPctKcal}–{setting:nutrition.proteinWatchAbovePctKcal}% of calories.",
+    "why": "Protein helps protect muscle, which shrinks in microgravity.",
+    "do": "Add protein-rich menu items today. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-protein-low-watch": {
+    "title": "Protein share low yesterday",
+    "what": "Yesterday {proteinDayPctOfKcal}% of your calories came from protein, below the daily target of {setting:nutrition.proteinWatchBelowPctKcal}–{setting:nutrition.proteinWatchAbovePctKcal}% of calories.",
+    "why": "Protein helps protect muscle, which shrinks in microgravity.",
+    "do": "Add protein-rich menu items today."
+  },
+  "nutrition-protein-high-watch": {
+    "title": "Protein share high yesterday",
+    "what": "Yesterday {proteinDayPctOfKcal}% of your calories came from protein, above the daily target of {setting:nutrition.proteinWatchBelowPctKcal}–{setting:nutrition.proteinWatchAbovePctKcal}% of calories.",
+    "why": "Very high protein intake can increase calcium loss from bone.",
+    "do": "Balance today's meals with more vegetables and grains."
+  },
+  "nutrition-protein-high-alert": {
+    "title": "Protein share high yesterday",
+    "what": "Yesterday {proteinDayPctOfKcal}% of your calories came from protein, above the daily target of {setting:nutrition.proteinWatchBelowPctKcal}–{setting:nutrition.proteinWatchAbovePctKcal}% of calories.",
+    "why": "Very high protein intake can increase calcium loss from bone.",
+    "do": "Balance today's meals with more vegetables and grains. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-calcium-low-alert": {
+    "title": "Calcium low yesterday",
+    "what": "Yesterday you logged {calciumDayMg} mg of calcium, below the daily target of {setting:nutrition.calciumWatchBelowMg}–{setting:nutrition.calciumWatchAboveMg} mg.",
+    "why": "Bones lose calcium in microgravity, and too little in the diet adds to the loss.",
+    "do": "Add calcium-rich menu items today. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-calcium-low-watch": {
+    "title": "Calcium low yesterday",
+    "what": "Yesterday you logged {calciumDayMg} mg of calcium, below the daily target of {setting:nutrition.calciumWatchBelowMg}–{setting:nutrition.calciumWatchAboveMg} mg.",
+    "why": "Bones lose calcium in microgravity, and too little in the diet adds to the loss.",
+    "do": "Add calcium-rich menu items today."
+  },
+  "nutrition-calcium-high-watch": {
+    "title": "Calcium high yesterday",
+    "what": "Yesterday you logged {calciumDayMg} mg of calcium, above the daily target of {setting:nutrition.calciumWatchBelowMg}–{setting:nutrition.calciumWatchAboveMg} mg.",
+    "why": "Too much calcium raises the risk of kidney stones, which is already higher in spaceflight.",
+    "do": "Choose fewer calcium-rich items today."
+  },
+  "nutrition-calcium-high-alert": {
+    "title": "Calcium high yesterday",
+    "what": "Yesterday you logged {calciumDayMg} mg of calcium, above the daily target of {setting:nutrition.calciumWatchBelowMg}–{setting:nutrition.calciumWatchAboveMg} mg.",
+    "why": "Too much calcium raises the risk of kidney stones, which is already higher in spaceflight.",
+    "do": "Choose fewer calcium-rich items today. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-vitaminD-low-alert": {
+    "title": "Vitamin D low yesterday",
+    "what": "Yesterday you logged {vitaminDDayUg} µg of vitamin D, below the daily target of {setting:nutrition.vitaminDWatchBelowUg}–{setting:nutrition.vitaminDWatchAboveUg} µg.",
+    "why": "Without sunlight, astronauts depend on food and supplements for the vitamin D their bones need.",
+    "do": "Add vitamin D-rich menu items today, and ask the flight surgeon about supplements. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-vitaminD-low-watch": {
+    "title": "Vitamin D low yesterday",
+    "what": "Yesterday you logged {vitaminDDayUg} µg of vitamin D, below the daily target of {setting:nutrition.vitaminDWatchBelowUg}–{setting:nutrition.vitaminDWatchAboveUg} µg.",
+    "why": "Without sunlight, astronauts depend on food and supplements for the vitamin D their bones need.",
+    "do": "Add vitamin D-rich menu items today, and ask the flight surgeon about supplements."
+  },
+  "nutrition-vitaminD-high-watch": {
+    "title": "Vitamin D high yesterday",
+    "what": "Yesterday you logged {vitaminDDayUg} µg of vitamin D, above the daily target of {setting:nutrition.vitaminDWatchBelowUg}–{setting:nutrition.vitaminDWatchAboveUg} µg.",
+    "why": "Very high vitamin D intake over time can be harmful.",
+    "do": "Choose fewer vitamin D-rich items today, and tell the flight surgeon if you take a supplement."
+  },
+  "nutrition-sodium-low-alert": {
+    "title": "Sodium low yesterday",
+    "what": "Yesterday you logged {sodiumDayMg} mg of sodium, below the daily target of {setting:nutrition.sodiumWatchBelowMg}–{setting:nutrition.sodiumWatchAboveMg} mg.",
+    "why": "Too little sodium can upset the body's fluid and electrolyte balance.",
+    "do": "Add a salted item to today's meals. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-sodium-low-watch": {
+    "title": "Sodium low yesterday",
+    "what": "Yesterday you logged {sodiumDayMg} mg of sodium, below the daily target of {setting:nutrition.sodiumWatchBelowMg}–{setting:nutrition.sodiumWatchAboveMg} mg.",
+    "why": "Too little sodium can upset the body's fluid and electrolyte balance.",
+    "do": "Add a salted item to today's meals."
+  },
+  "nutrition-sodium-high-watch": {
+    "title": "Sodium high yesterday",
+    "what": "Yesterday you logged {sodiumDayMg} mg of sodium, above the daily target of {setting:nutrition.sodiumWatchBelowMg}–{setting:nutrition.sodiumWatchAboveMg} mg.",
+    "why": "High sodium is linked to bone loss, kidney stones and high blood pressure.",
+    "do": "Choose lower-sodium items today."
+  },
+  "nutrition-sodium-high-alert": {
+    "title": "Sodium high yesterday",
+    "what": "Yesterday you logged {sodiumDayMg} mg of sodium, above the daily target of {setting:nutrition.sodiumWatchBelowMg}–{setting:nutrition.sodiumWatchAboveMg} mg.",
+    "why": "High sodium is linked to bone loss, kidney stones and high blood pressure.",
+    "do": "Choose lower-sodium items today. An alert has been sent to the flight surgeon."
+  },
+  "nutrition-protein-minimum-watch": {
+    "title": "Protein below minimum yesterday",
+    "what": "Yesterday you logged {proteinDayG} g of protein, below your minimum of {proteinMinimumG} g ({setting:nutrition.proteinGPerKg} g per kg of body mass).",
+    "why": "Protein helps protect muscle, which shrinks in microgravity.",
+    "do": "Add protein-rich menu items today."
+  },
+  "behavioral-health-watch": {
+    "title": "Possible behavioral health concern",
+    "what": "Your mood check-ins over the last {setting:mind.windowDays} days averaged low ({moodAverage}), and your HRV is {hrvBelowBaselineSd} standard deviations below your baseline.",
+    "why": "Isolation, confinement and disrupted sleep add up on long missions.",
+    "do": "Protect your next sleep period and consider a private call with the flight surgeon or family."
+  },
+  "behavioral-health-alert": {
+    "title": "Behavioral health concern",
+    "what": "Your mood check-ins averaged low ({moodAverage}) and your stress check-ins high ({stressAverage}) over the last {setting:mind.windowDays} days, and your HRV is {hrvBelowBaselineSd} standard deviations below your baseline.",
+    "why": "Isolation, confinement and disrupted sleep add up on long missions.",
+    "do": "An alert has been sent to the flight surgeon. You can ask them for a private conference."
+  }
+}

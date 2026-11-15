@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch measuring ECG</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 520px; height: 520px; display: flex; align-items: center; justify-content: center; background: #1A1F29; font-family: Inter, sans-serif; color: #E8EDF6">
+<div style="position: relative; width: 450px; height: 450px; border-radius: 50%; background: #000; box-shadow: 0 0 0 14px #2B313C, 0 0 0 16px #3A4250; overflow: hidden">
+<svg width="450" height="450" viewBox="0 0 450 450" style="position: absolute; inset: 0" aria-hidden="true">
+<circle cx="225" cy="225" r="208" fill="none" stroke="#10151F" stroke-width="10"></circle>
+<circle cx="225" cy="225" r="208" fill="none" stroke="#7FB4FF" stroke-width="10" stroke-linecap="round" stroke-dasharray="1307" stroke-dashoffset="871" transform="rotate(-90 225 225)"></circle>
+</svg>
+<div style="position: absolute; top: 34px; right: 68px; display: flex; align-items: center; gap: 6px; color: #7FB4FF; font-size: 13px; font-weight: 600">
+<span>Top button</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 19L19 5M19 5h-8M19 5v8"></path></svg>
+</div>
+<div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center">
+<span style="font-size: 20px; font-weight: 700; margin-top: 24px">ECG</span>
+<svg width="300" height="60" viewBox="0 0 300 60" aria-hidden="true"><polyline points="0,34 30,34 42,34 50,12 58,50 66,34 110,34 122,34 130,12 138,50 146,34 190,34 202,34 210,12 218,50 226,34 270,34 282,34 290,12 300,40" fill="none" stroke="#7FB4FF" stroke-width="2.5" stroke-linejoin="round"></polyline></svg>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 40px; font-weight: 700; line-height: 1">20<span style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; color: #9AA6BA"> s left</span></span>
+<span style="width: 290px; padding: 10px 14px; box-sizing: border-box; border-radius: 16px; background: #10151F; border: 1px solid #253045; font-size: 14px; color: #C9D2E0">Rest your arm and keep a fingertip on the top button.</span>
+<span style="height: 44px; padding: 0 22px; display: inline-flex; align-items: center; border-radius: 22px; border: 1px solid #7FB4FF; background: rgba(127,180,255,.16); color: #7FB4FF; font-size: 15px; font-weight: 700">Cancel</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":520,"height":520}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

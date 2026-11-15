@@ -1,0 +1,180 @@
+/* Theme tokens from the approved mockups (SPEC.md §9.1). Dark is the default;
+   the light theme is applied with data-theme="light" on <html> by the header toggle. */
+:root {
+  --bg: #0a0e16;
+  --panel: #121826;
+  --panel2: #18202f;
+  --line: #253045;
+  --text: #e8edf6;
+  --muted: #9aa6ba;
+  --accent: #7fb4ff;
+  --accentbg: rgba(127, 180, 255, 0.14);
+  --ok: #3ddc97;
+  --okbg: rgba(61, 220, 151, 0.12);
+  --warn: #ffc24b;
+  --warnbg: rgba(255, 194, 75, 0.13);
+  --bad: #ff6b7a;
+  --badbg: rgba(255, 107, 122, 0.14);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f3f5f9;
+  --panel: #ffffff;
+  --panel2: #eef1f6;
+  --line: #d6dce6;
+  --text: #111827;
+  --muted: #4b5567;
+  --accent: #1f5fbf;
+  --accentbg: rgba(31, 95, 191, 0.1);
+  --ok: #0f7b4f;
+  --okbg: rgba(15, 123, 79, 0.1);
+  --warn: #8a5a00;
+  --warnbg: rgba(196, 138, 0, 0.14);
+  --bad: #b42335;
+  --badbg: rgba(180, 35, 53, 0.1);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover, var(--accent));
+}
+
+:root {
+  --accent-hover: #b5d3ff;
+  --radius-panel: 14px;
+  --radius-control: 10px;
+  --font-heading: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+}
+
+:root[data-theme="light"] {
+  --accent-hover: #174a96;
+}
+
+/* Status tones: every status has a color and a symbol (SPEC §9.1). "neutral" is the
+   "no status yet" look used until the rules engine reports. */
+[data-tone="ok"] {
+  --tone: var(--ok);
+  --tonebg: var(--okbg);
+}
+[data-tone="warn"] {
+  --tone: var(--warn);
+  --tonebg: var(--warnbg);
+}
+[data-tone="bad"] {
+  --tone: var(--bad);
+  --tonebg: var(--badbg);
+}
+[data-tone="neutral"] {
+  --tone: var(--muted);
+  --tonebg: var(--panel2);
+}
+
+.page {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+}
+
+.panelTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.mainColumn {
+  flex: 999 1 640px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sideColumn {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 16px 16px 40px;
+  }
+}

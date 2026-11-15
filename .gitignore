@@ -1,0 +1,16 @@
+.playwright-mcp/
+.DS_Store
+node_modules/
+# Web
+.next/
+web/.next/
+# Watch (Android/Gradle)
+watch/.gradle/
+watch/build/
+watch/app/build/
+watch/local.properties
+watch/.idea/
+.kotlin/
+watch/.kotlin/
+.env
+.claude/

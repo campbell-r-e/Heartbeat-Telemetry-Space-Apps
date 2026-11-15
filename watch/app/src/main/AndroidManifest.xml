@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <!-- Health sensors: BODY_SENSORS up to Android 15 / Wear OS 5; granular health permissions on Android 16+ / Wear OS 6. -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" android:maxSdkVersion="35" />
+    <uses-permission android:name="android.permission.health.READ_HEART_RATE" />
+    <uses-permission android:name="android.permission.health.READ_SKIN_TEMPERATURE" />
+    <uses-permission android:name="android.permission.health.READ_OXYGEN_SATURATION" />
+    <uses-permission android:name="com.samsung.android.hardware.sensormanager.permission.READ_ADDITIONAL_HEALTH_DATA" />
+
+    <!-- Collecting with the screen off. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+    <!-- The processor stays awake while the watch is worn, so no accelerometer sample is lost (owner decision). -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Reminders. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Exact reminder times. A health-reminder app uses SCHEDULE_EXACT_ALARM (granted by the user in system
+         settings); USE_EXACT_ALARM is reserved by Android policy for alarm-clock and calendar apps. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Requesting Wi-Fi explicitly: on Wear OS the default network may be the phone's Bluetooth proxy. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- The onboard server speaks plain HTTP on the spacecraft LAN (SPEC §3). -->
+    <application
+        android:name=".HeartbeatApplication"
+        android:label="Heartbeat"
+        android:icon="@drawable/ic_reminder"
+        android:usesCleartextTraffic="true"
+        android:theme="@android:style/Theme.DeviceDefault">
+
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <!-- The only activity: settings, measurements, food and the screens reminders open are all drawn inside it.
+             "portrait" fixes it to the watch's natural orientation, with the band running top to bottom; it never
+             turns sideways, and it does not follow the accelerometer (unlike "sensorPortrait" and "userPortrait",
+             which may flip to reverse portrait). See android:screenOrientation in
+             https://developer.android.com/guide/topics/manifest/activity-element#screen
+             The Galaxy Watch5 Pro on Wear OS 6 ignores app orientation requests (its display sets
+             ignoreOrientationRequest), so its auto-rotate must be off; this value is the backup. See SPEC §9.3. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".collect.TelemetryService"
+            android:exported="false"
+            android:foregroundServiceType="health" />
+
+        <receiver
+            android:name=".reminders.ReminderReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".reminders.RescheduleReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

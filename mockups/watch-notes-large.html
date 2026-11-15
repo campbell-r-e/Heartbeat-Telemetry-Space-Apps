@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch notes, large text</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #1A1F29; font-family: Inter, sans-serif; color: #E8EDF6; }
+  .row { display: flex; gap: 24px; padding: 24px; }
+  .frame { width: 520px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .cap { font-size: 18px; color: #9AA6BA; text-align: center; max-width: 470px; }
+  .cap b { color: #E8EDF6; }
+  .face { position: relative; width: 450px; height: 450px; border-radius: 50%; background: #000;
+          box-shadow: 0 0 0 14px #2B313C, 0 0 0 16px #3A4250; overflow: hidden; margin: 16px; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .top { position: absolute; top: 18px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .btn { display: flex; align-items: center; justify-content: center; height: 64px; border-radius: 32px;
+         font-size: 24px; font-weight: 700; }
+  .dot { position: absolute; width: 106px; height: 106px; border-radius: 50%; display: flex; flex-direction: column;
+         align-items: center; justify-content: center; gap: 4px; box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div class="row">
+
+  <!-- 1. Notification -->
+  <div class="frame">
+    <div class="face">
+      <div class="top"><span class="mono" style="font-size:26px">14:09</span></div>
+      <div style="position:absolute; top:78px; left:40px; right:40px; padding:20px 24px; border-radius:32px; background:#10151F; border:2px solid #6EA8FE;">
+        <div style="font-size:20px; color:#6EA8FE; font-weight:700">✉ Heartbeat</div>
+        <div style="font-size:26px; font-weight:700; margin-top:6px">Note from Flight Surgeon</div>
+        <div style="font-size:24px; color:#C9D3E3; margin-top:8px; line-height:1.3">Stay in the shielded area. Recheck dose rate in 30 min.</div>
+        <div style="font-size:20px; color:#9AA6BA; margin-top:8px">Sent 14:06 UTC</div>
+      </div>
+      <div style="position:absolute; bottom:44px; left:90px; right:90px;" class="btn" >
+        <span style="background:#1E2A40; border:2px solid #6EA8FE; color:#6EA8FE; width:100%; height:64px; border-radius:32px; display:flex; align-items:center; justify-content:center">Open</span>
+      </div>
+    </div>
+    <div class="cap"><b>1 · Arrives:</b> the watch buzzes and posts this notification. Tap <b>Open</b> to read it in the app.</div>
+  </div>
+
+  <!-- 2. Note screen -->
+  <div class="frame">
+    <div class="face">
+      <div class="top">
+        <span class="mono" style="font-size:26px">14:09</span>
+        <span style="font-size:26px; font-weight:700">Flight Surgeon</span>
+      </div>
+      <div style="position:absolute; top:104px; left:44px; right:44px; display:flex; flex-direction:column; gap:12px">
+        <div style="font-size:20px; color:#9AA6BA">Sent 14:06 UTC · about Radiation dose spike</div>
+        <div style="font-size:28px; line-height:1.3">Stay in the shielded area. Recheck dose rate in 30 min.</div>
+        <div class="btn" style="margin:6px 40px 0; background:#1E2A40; border:2px solid #6EA8FE; color:#6EA8FE">Mark read</div>
+      </div>
+      <div style="position:absolute; right:18px; top:150px; width:5px; height:150px; border-radius:3px; background:#253045"><div style="width:5px; height:90px; border-radius:3px; background:#9AA6BA"></div></div>
+    </div>
+    <div class="cap"><b>2 · Note:</b> large text, scrolls if long. Shows the alert it's about, if any. <b>Mark read</b> sends the receipt to Earth. Several unread notes: oldest first, one screen each.</div>
+  </div>
+
+  <!-- 3. After read -->
+  <div class="frame">
+    <div class="face">
+      <div class="top">
+        <span class="mono" style="font-size:26px">14:10</span>
+        <span style="font-size:26px; font-weight:700">Flight Surgeon</span>
+      </div>
+      <div style="position:absolute; top:104px; left:44px; right:44px; display:flex; flex-direction:column; gap:12px">
+        <div style="font-size:20px; color:#9AA6BA">Sent 14:06 UTC · about Radiation dose spike</div>
+        <div style="font-size:28px; line-height:1.3">Stay in the shielded area. Recheck dose rate in 30 min.</div>
+        <div style="margin-top:6px; text-align:center; font-size:24px; font-weight:700; color:#3DDC97">✓ Read · 14:10 UTC</div>
+      </div>
+    </div>
+    <div class="cap"><b>3 · Read:</b> confirms it. Back or swipe right returns home.</div>
+  </div>
+
+  <!-- 4. Home with unread note -->
+  <div class="frame">
+    <div class="face">
+      <div class="dot" style="left:172px; top:8px; background:rgba(61,220,151,.16); border:2px solid #3DDC97; color:#3DDC97"><span style="font-size:26px">●</span><span style="font-size:20px; font-weight:700; color:#E8EDF6">Vitals</span></div>
+      <div class="dot" style="left:322px; top:92px; background:rgba(255,107,122,.16); border:2px solid #FF6B7A; color:#FF6B7A"><span style="font-size:26px">■</span><span style="font-size:20px; font-weight:700; color:#E8EDF6">Radiation</span></div>
+      <div class="dot" style="left:322px; top:254px; background:#10151F; border:2px solid #3A4250; color:#3A4250"><span style="font-size:26px">○</span><span style="font-size:20px; font-weight:700; color:#E8EDF6">Gravity</span></div>
+      <div class="dot" style="left:172px; top:338px; background:rgba(61,220,151,.16); border:2px solid #3DDC97; color:#3DDC97"><span style="font-size:26px">●</span><span style="font-size:20px; font-weight:700; color:#E8EDF6">Cabin</span></div>
+      <div class="dot" style="left:22px; top:254px; background:#10151F; border:2px solid #3A4250; color:#3A4250"><span style="font-size:26px">○</span><span style="font-size:20px; font-weight:700; color:#E8EDF6">Food</span></div>
+      <div class="dot" style="left:22px; top:92px; background:#10151F; border:2px solid #3A4250; color:#3A4250"><span style="font-size:26px">○</span><span style="font-size:20px; font-weight:700; color:#E8EDF6">Mind</span></div>
+      <div style="position:absolute; left:120px; top:132px; width:210px; height:186px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center">
+        <span class="mono" style="font-size:34px; font-weight:700">14:12</span>
+        <span style="font-size:20px; color:#9AA6BA">Sun 15 · 92%</span>
+        <span style="font-size:24px; font-weight:700; color:#FF6B7A; margin-top:4px">■ 1 Alert</span>
+        <span style="margin-top:6px; padding:4px 14px; border-radius:20px; border:2px solid #6EA8FE; color:#6EA8FE; font-size:22px; font-weight:700">✉ 1 note</span>
+      </div>
+    </div>
+    <div class="cap"><b>4 · Unread waiting:</b> if dismissed unread, home shows <b>✉ 1 note</b>; tap it to open. Gone once read.</div>
+  </div>
+
+</div>
+</body>
+</html>

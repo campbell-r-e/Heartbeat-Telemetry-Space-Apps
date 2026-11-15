@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flight surgeon console</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#7FB4FF}a:hover{color:#B5D3FF}
+.theme-dark{--bg:#0A0E16;--panel:#121826;--panel2:#18202F;--line:#253045;--text:#E8EDF6;--muted:#9AA6BA;--accent:#7FB4FF;--accentbg:rgba(127,180,255,.14);--ok:#3DDC97;--okbg:rgba(61,220,151,.12);--warn:#FFC24B;--warnbg:rgba(255,194,75,.13);--bad:#FF6B7A;--badbg:rgba(255,107,122,.14)}
+.theme-light{--bg:#F3F5F9;--panel:#FFFFFF;--panel2:#EEF1F6;--line:#D6DCE6;--text:#111827;--muted:#4B5567;--accent:#1F5FBF;--accentbg:rgba(31,95,191,.10);--ok:#0F7B4F;--okbg:rgba(15,123,79,.10);--warn:#8A5A00;--warnbg:rgba(196,138,0,.14);--bad:#B42335;--badbg:rgba(180,35,53,.10)}
+</style>
+</helmet>
+<div class="{{themeClass}}" style="min-height: 100vh; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; font-size: 15px; line-height: 1.45">
+<div style="max-width: 1360px; margin: 0 auto; padding: 24px 24px 48px; display: flex; flex-direction: column; gap: 18px">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 16px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px">
+<div style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 220px; min-width: 0">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px">Mission Control · Flight Surgeon</span>
+<span style="color: var(--muted); font-size: 13px">Mars transit · Day 42 · Crew of 3</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px">Link delay (one way)</span>
+<div role="group" aria-label="Link delay preset" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 3px; background: var(--panel2); border-radius: 10px">
+<sc-for list="{{delays}}" as="d" hint-placeholder-count="4">
+<button type="button" onClick="{{d.pick}}" aria-pressed="{{d.on}}" style="{{d.style}}">{{d.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; padding: 8px 14px; background: var(--accentbg); border-radius: 10px; min-width: 150px">
+<span style="font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: .6px; font-weight: 600">Data as of</span>
+<span style="font-size: 15px; font-weight: 600">{{asOf}}</span>
+</div>
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" style="height: 44px; min-width: 44px; padding: 0 14px; display: flex; align-items: center; gap: 8px; background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 10px; font: inherit; cursor: pointer">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+<span>{{themeText}}</span>
+</button>
+</header>
+
+<nav role="tablist" aria-label="Console sections" style="display: flex; gap: 6px; border-bottom: 1px solid var(--line)">
+<button type="button" role="tab" aria-selected="{{onAlerts}}" onClick="{{showAlerts}}" style="{{tabAlertsStyle}}">Alerts <span style="margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: var(--bad); color: var(--bg); font-size: 12px; font-weight: 700">{{openCount}}</span></button>
+<button type="button" role="tab" aria-selected="{{onCrew}}" onClick="{{showCrew}}" style="{{tabCrewStyle}}">Crew &amp; Watches</button>
+</nav>
+
+<sc-if value="{{onAlerts}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+
+<section aria-label="Alert feed" style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; flex: 1">Alert feed</span>
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
+<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="{{f.style}}">{{f.label}}</button>
+</sc-for>
+</div>
+
+<sc-for list="{{alerts}}" as="a" hint-placeholder-count="4">
+<article style="{{a.cardStyle}}">
+<button type="button" onClick="{{a.open}}" aria-expanded="{{a.isOpen}}" style="all: unset; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 14px 16px; min-height: 44px; box-sizing: border-box; width: 100%">
+<span style="{{a.pillStyle}}">{{a.statusText}}</span>
+<span style="font-weight: 600; flex: 1 1 260px">{{a.who}} · {{a.title}}</span>
+<span style="{{a.stateStyle}}">{{a.stateText}}</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); width: 100%">Sent {{a.sent}} ship · Received {{a.recv}} ground · {{a.lag}} delay</span>
+</button>
+<sc-if value="{{a.isOpen}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 0 16px 16px; border-top: 1px solid var(--line)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; padding-top: 14px">
+<div><div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px">What it means</div><div>{{a.what}}</div></div>
+<div><div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px">Astronaut was told</div><div>{{a.told}}</div></div>
+</div>
+<div style="background: var(--panel2); border-radius: 10px; padding: 12px">
+<div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px"><span>{{a.chartLabel}}</span><span>−6 h → alert</span></div>
+<svg viewBox="0 0 600 90" preserveAspectRatio="none" style="width: 100%; height: 90px" role="img" aria-label="{{a.chartLabel}} leading up to the alert">
+<rect x="0" y="{{a.bandY}}" width="600" height="{{a.bandH}}" fill="var(--panel)"></rect>
+<line x1="560" y1="0" x2="560" y2="90" stroke="var(--muted)" stroke-dasharray="4 4"></line>
+<polyline points="{{a.spark}}" fill="none" stroke="{{a.color}}" stroke-width="2.5" stroke-linejoin="round"></polyline>
+</svg>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted)">Note to {{a.who}} (arrives after the link delay)
+<textarea rows="2" placeholder="e.g. Stay in the shielded area. Recheck dose rate in 30 min." style="font: inherit; color: var(--text); background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 10px; resize: vertical"></textarea>
+</label>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" onClick="{{a.ack}}" style="height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accentbg); color: var(--accent); font: inherit; font-weight: 600; cursor: pointer">Acknowledge</button>
+<button type="button" style="height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: inherit; font-weight: 600; cursor: pointer">Send note</button>
+<button type="button" style="height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: inherit; font-weight: 600; cursor: pointer">View full charts</button>
+<button type="button" onClick="{{a.resolve}}" style="height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--ok); background: var(--okbg); color: var(--ok); font: inherit; font-weight: 600; cursor: pointer; margin-left: auto">Mark resolved</button>
+</div>
+</div>
+</sc-if>
+</article>
+</sc-for>
+</section>
+
+<aside aria-label="Crew summary" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Crew</span>
+<sc-for list="{{crew}}" as="m" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="font-weight: 600; flex: 1">{{m.name}}</span>
+<span style="{{m.pillStyle}}">{{m.statusText}}</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{m.areas}}" as="ar" hint-placeholder-count="6">
+<span style="{{ar.style}}">{{ar.sym}} {{ar.name}}</span>
+</sc-for>
+</div>
+<span style="font-size: 12px; color: var(--muted)">{{m.watch}}</span>
+</div>
+</sc-for>
+</aside>
+
+</div>
+</sc-if>
+
+<sc-if value="{{onCrew}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 12px 16px; background: var(--accentbg); border-radius: 10px; color: var(--text)">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+<span>Changes reach the spacecraft after the link delay ({{delayText}}). Pending changes show as "Sending".</span>
+</div>
+
+<section aria-label="Crew" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Crew</span>
+<button type="button" style="height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accentbg); color: var(--accent); font: inherit; font-weight: 600; cursor: pointer">+ Add astronaut</button>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="text-align: left; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .5px">
+<th style="padding: 8px 10px; border-bottom: 1px solid var(--line)">Astronaut</th>
+<th style="padding: 8px 10px; border-bottom: 1px solid var(--line)">Watch</th>
+<th style="padding: 8px 10px; border-bottom: 1px solid var(--line)">Last contact</th>
+<th style="padding: 8px 10px; border-bottom: 1px solid var(--line)">Battery</th>
+<th style="padding: 8px 10px; border-bottom: 1px solid var(--line)">Sync</th>
+<th style="padding: 8px 10px; border-bottom: 1px solid var(--line)">Actions</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{roster}}" as="r" hint-placeholder-count="3">
+<tr>
+<td style="padding: 10px; border-bottom: 1px solid var(--line); font-weight: 600">{{r.name}}</td>
+<td style="padding: 10px; border-bottom: 1px solid var(--line)">{{r.watch}}</td>
+<td style="padding: 10px; border-bottom: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 13px">{{r.contact}}</td>
+<td style="padding: 10px; border-bottom: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 13px">{{r.battery}}</td>
+<td style="padding: 10px; border-bottom: 1px solid var(--line)"><span style="{{r.syncStyle}}">{{r.sync}}</span></td>
+<td style="padding: 10px; border-bottom: 1px solid var(--line)">
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<button type="button" style="height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: inherit; font-size: 13px; cursor: pointer">Reassign watch</button>
+<button type="button" style="height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: inherit; font-size: 13px; cursor: pointer">Unassign</button>
+<button type="button" style="height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--bad); background: transparent; color: var(--bad); font: inherit; font-size: 13px; cursor: pointer">Remove</button>
+</div>
+</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+
+<section aria-label="Unassigned watches" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Unassigned watches</span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 12px 14px; background: var(--panel2); border-radius: 10px">
+<span style="flex: 1 1 240px">Galaxy Watch5 Pro · ID ••••7C21 · spare</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Battery 100%</span>
+<button type="button" style="height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accentbg); color: var(--accent); font: inherit; font-weight: 600; cursor: pointer">Assign to…</button>
+</div>
+</section>
+</div>
+</sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startDark":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1180}}'>
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.state = { dark: null, tab: 'alerts', open: 'a1', filter: 'all', delay: 'marsClose', st: { a1: 'New', a2: 'Acknowledged', a3: 'New', a4: 'New' } };
+  }
+  renderVals() {
+    var self = this;
+    var dark = this.state.dark === null ? (this.props.startDark ?? true) : this.state.dark;
+    var C = { normal: 'var(--ok)', watch: 'var(--warn)', alert: 'var(--bad)' };
+    var BG = { normal: 'var(--okbg)', watch: 'var(--warnbg)', alert: 'var(--badbg)' };
+    var LBL = { normal: '● Normal', watch: '▲ Watch', alert: '■ Alert' };
+    var SYM = { normal: '●', watch: '▲', alert: '■' };
+    function pill(k) { return 'padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; white-space: nowrap; background: ' + BG[k] + '; color: ' + C[k] + '; border: 1px solid ' + C[k]; }
+    function seg(on) { return 'height: 36px; min-width: 44px; padding: 0 12px; border-radius: 8px; border: 0; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: ' + (on ? 'var(--accent)' : 'transparent') + '; color: ' + (on ? 'var(--bg)' : 'var(--text)'); }
+    function tab(on) { return 'height: 44px; padding: 0 16px; border: 0; border-bottom: 3px solid ' + (on ? 'var(--accent)' : 'transparent') + '; background: transparent; color: ' + (on ? 'var(--text)' : 'var(--muted)') + '; font: inherit; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center'; }
+    var D = [
+      { id: 'iss', label: 'ISS', lag: '0 s', recv: ['14:02:10', '13:47:30', '09:15:02', '07:40:11'] },
+      { id: 'moon', label: 'Moon', lag: '1.3 s', recv: ['14:02:11', '13:47:31', '09:15:03', '07:40:12'] },
+      { id: 'marsClose', label: 'Mars (3 min)', lag: '3 min', recv: ['14:05:10', '13:50:30', '09:18:02', '07:43:11'] },
+      { id: 'marsFar', label: 'Mars (22 min)', lag: '22 min', recv: ['14:24:10', '14:09:30', '09:37:02', '08:02:11'] }
+    ];
+    var cur = D.filter(function (d) { return d.id === self.state.delay; })[0];
+    var delays = D.map(function (d) { return { label: d.label, on: d.id === self.state.delay, style: seg(d.id === self.state.delay), pick: function () { self.setState({ delay: d.id }); } }; });
+    var raw = [
+      { id: 'a1', k: 'alert', who: 'Astronaut 1', title: 'Radiation dose rate spike (6.8×)', sent: '14:02:10', what: 'Dose rate jumped to 6.8 times its recent average over 20 minutes. Possible solar particle event; affects the whole crew.', told: 'Move to the most shielded area and stay until the rate drops.', chartLabel: 'Dose rate (ISS RadLab replay)', spark: '0,78 60,77 120,79 180,76 240,78 300,77 360,75 420,70 480,52 540,24 560,12 600,10', bandY: 62, bandH: 24 },
+      { id: 'a2', k: 'alert', who: 'Astronaut 3', title: 'Blood oxygen 88% for 10 min', sent: '13:47:30', what: 'SpO₂ stayed below 90% across three readings. Heart rate up 20% from baseline.', told: 'Sit still, breathe slowly, recheck SpO₂ in 5 minutes. Check cabin CO₂.', chartLabel: 'SpO₂ %', spark: '0,20 60,22 120,21 180,24 240,22 300,30 360,44 420,58 480,64 540,66 560,67 600,66', bandY: 10, bandH: 26 },
+      { id: 'a3', k: 'watch', who: 'Astronaut 1', title: 'Possible behavioral health concern', sent: '09:15:02', what: 'Under 6 h sleep for 3 nights, low mood check-ins, HRV down 12%.', told: 'Dim lights before sleep, log a check-in tonight, talk with a crewmate.', chartLabel: 'Sleep hours (7 nights)', spark: '0,30 90,32 180,34 270,40 360,52 450,58 560,62 600,62', bandY: 20, bandH: 24 },
+      { id: 'a4', k: 'watch', who: 'Astronaut 2', title: 'Resting heart rate 18% above baseline', sent: '07:40:11', what: 'Resting HR 84 bpm vs. baseline 71 bpm. Skin temperature also slightly high.', told: 'Hydrate, rest 10 minutes, then recheck.', chartLabel: 'Resting heart rate', spark: '0,58 60,57 120,56 180,55 240,52 300,48 360,44 420,40 480,38 560,36 600,36', bandY: 44, bandH: 30 }
+    ];
+    var filt = this.state.filter;
+    var alerts = raw.map(function (a, i) {
+      var s = self.state.st[a.id];
+      var stateStyle = 'font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 6px; ' + (s === 'New' ? 'background: var(--accent); color: var(--bg)' : s === 'Resolved' ? 'background: var(--okbg); color: var(--ok)' : 'background: var(--panel2); color: var(--muted)');
+      var isOpen = self.state.open === a.id;
+      var cardStyle = 'background: var(--panel); border-radius: 14px; overflow: hidden; border: ' + (a.k === 'alert' && s !== 'Resolved' ? '2px solid var(--bad)' : '1px solid var(--line)') + '; opacity: ' + (s === 'Resolved' ? '.6' : '1');
+      function setS(v) { var st = Object.assign({}, self.state.st); st[a.id] = v; self.setState({ st: st }); }
+      return Object.assign({}, a, { pillStyle: pill(a.k), statusText: LBL[a.k], color: C[a.k], stateText: s, stateStyle: stateStyle, isOpen: isOpen, cardStyle: cardStyle, recv: cur.recv[i], lag: cur.lag,
+        open: function () { self.setState({ open: isOpen ? null : a.id }); },
+        ack: function () { setS('Acknowledged'); },
+        resolve: function () { setS('Resolved'); } });
+    }).filter(function (a) { return filt === 'all' || a.k === filt; });
+    var F = [{ id: 'all', label: 'All' }, { id: 'alert', label: '■ Alert' }, { id: 'watch', label: '▲ Watch' }];
+    var filters = F.map(function (f) { var on = f.id === filt; return { label: f.label, on: on, pick: function () { self.setState({ filter: f.id }); }, style: 'height: 36px; padding: 0 12px; border-radius: 999px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid ' + (on ? 'var(--accent)' : 'var(--line)') + '; background: ' + (on ? 'var(--accentbg)' : 'transparent') + '; color: ' + (on ? 'var(--accent)' : 'var(--text)') }; });
+    var names = ['Vitals', 'Radiation', 'Gravity', 'Cabin', 'Food', 'Mind'];
+    function areas(ks) { return ks.map(function (k, i) { return { name: names[i], sym: SYM[k], style: 'font-size: 12px; padding: 4px 6px; border-radius: 6px; background: ' + BG[k] + '; color: ' + C[k] + '; white-space: nowrap; overflow: hidden; text-overflow: ellipsis' }; }); }
+    var crew = [
+      { name: 'Astronaut 1', k: 'alert', a: ['normal', 'alert', 'watch', 'normal', 'normal', 'watch'], watch: 'Watch ••••4A9F · 2 min ago · 64%' },
+      { name: 'Astronaut 2', k: 'watch', a: ['watch', 'alert', 'normal', 'normal', 'normal', 'normal'], watch: 'Seeded data · 3 min ago' },
+      { name: 'Astronaut 3', k: 'alert', a: ['alert', 'alert', 'normal', 'watch', 'normal', 'normal'], watch: 'Seeded data · 3 min ago' }
+    ].map(function (m) { return { name: m.name, pillStyle: pill(m.k), statusText: LBL[m.k], areas: areas(m.a), watch: m.watch }; });
+    var syncOk = 'font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: var(--okbg); color: var(--ok)';
+    var syncPend = 'font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: var(--warnbg); color: var(--warn)';
+    var roster = [
+      { name: 'Astronaut 1', watch: 'Galaxy Watch5 Pro · ••••4A9F', contact: '2 min ago', battery: '64%', sync: 'Synced', syncStyle: syncOk },
+      { name: 'Astronaut 2', watch: 'Simulated · seed data', contact: '3 min ago', battery: '—', sync: 'Synced', syncStyle: syncOk },
+      { name: 'Astronaut 3', watch: 'Simulated · seed data', contact: '3 min ago', battery: '—', sync: 'Sending · 1:12 left', syncStyle: syncPend }
+    ];
+    var openCount = raw.filter(function (a) { return self.state.st[a.id] !== 'Resolved'; }).length;
+    var onAlerts = this.state.tab === 'alerts';
+    return {
+      themeClass: dark ? 'theme-dark' : 'theme-light',
+      themeText: dark ? 'Light mode' : 'Dark mode',
+      themeLabel: dark ? 'Switch to light mode' : 'Switch to dark mode',
+      toggleTheme: function () { self.setState({ dark: !dark }); },
+      delays: delays, delayText: cur.lag,
+      asOf: cur.id === 'iss' ? 'Live' : cur.lag + ' ago',
+      onAlerts: onAlerts, onCrew: !onAlerts,
+      showAlerts: function () { self.setState({ tab: 'alerts' }); },
+      showCrew: function () { self.setState({ tab: 'crew' }); },
+      tabAlertsStyle: tab(onAlerts), tabCrewStyle: tab(!onAlerts),
+      openCount: openCount, filters: filters, alerts: alerts, crew: crew, roster: roster
+    };
+  }
+}
+</script>
+</body>
+</html>

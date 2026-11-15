@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Astronaut dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#7FB4FF}a:hover{color:#B5D3FF}
+.theme-dark{--bg:#0A0E16;--panel:#121826;--panel2:#18202F;--line:#253045;--text:#E8EDF6;--muted:#9AA6BA;--accent:#7FB4FF;--ok:#3DDC97;--okbg:rgba(61,220,151,.12);--warn:#FFC24B;--warnbg:rgba(255,194,75,.13);--bad:#FF6B7A;--badbg:rgba(255,107,122,.14)}
+.theme-light{--bg:#F3F5F9;--panel:#FFFFFF;--panel2:#EEF1F6;--line:#D6DCE6;--text:#111827;--muted:#4B5567;--accent:#1F5FBF;--ok:#0F7B4F;--okbg:rgba(15,123,79,.10);--warn:#8A5A00;--warnbg:rgba(196,138,0,.14);--bad:#B42335;--badbg:rgba(180,35,53,.10)}
+</style>
+</helmet>
+<div class="{{themeClass}}" style="min-height: 100vh; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; font-size: 15px; line-height: 1.45">
+<div style="max-width: 1360px; margin: 0 auto; padding: 24px 24px 48px; display: flex; flex-direction: column; gap: 20px">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 16px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px">
+<div style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 220px; min-width: 0">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .2px">Heartbeat Telemetry</span>
+<span style="color: var(--muted); font-size: 13px">Astronaut 1 · Mars transit</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<div style="display: flex; flex-direction: column; padding: 8px 14px; background: var(--panel2); border-radius: 10px; min-width: 96px">
+<span style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px">Mission day</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 18px">42</span>
+</div>
+<div style="display: flex; flex-direction: column; padding: 8px 14px; background: var(--panel2); border-radius: 10px; min-width: 120px">
+<span style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px">Gravity</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 18px">0 g <span style="font-family: Inter, sans-serif; font-size: 12px; color: var(--muted)">micro</span></span>
+</div>
+<div style="display: flex; flex-direction: column; padding: 8px 14px; background: var(--panel2); border-radius: 10px; min-width: 130px">
+<span style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px">Points · Streak</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 18px">1,240 · 9d</span>
+</div>
+<div style="display: flex; flex-direction: column; padding: 8px 14px; background: var(--warnbg); border-radius: 10px; min-width: 150px">
+<span style="font-size: 11px; color: var(--warn); text-transform: uppercase; letter-spacing: .6px; font-weight: 600">Next reminder</span>
+<span style="font-size: 15px; font-weight: 600">ECG due in 20 min</span>
+</div>
+<div style="display: flex; flex-direction: column; padding: 8px 14px; background: var(--panel2); border-radius: 10px; min-width: 150px">
+<span style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px">Earth link</span>
+<span style="font-size: 15px; display: flex; align-items: center; gap: 6px"><svg width="10" height="10" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="var(--ok)"></circle></svg>Connected · 3 min delay</span>
+</div>
+</div>
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" style="height: 44px; min-width: 44px; padding: 0 14px; display: flex; align-items: center; gap: 8px; background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 10px; font: inherit; cursor: pointer">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+<span>{{themeText}}</span>
+</button>
+</header>
+
+<section aria-label="Alert" role="alert" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 20px; background: var(--badbg); border: 2px solid var(--bad); border-radius: 14px">
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; background: var(--bad); color: var(--bg); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px">■ Alert</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; flex: 1 1 260px">Radiation dose rate spike · Radiation</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 8px; border: 1px solid var(--bad); color: var(--bad); font-size: 13px; font-weight: 600">Flight surgeon notified · arrives in 2:41</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<div><div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px">What it means</div><div>The dose rate jumped to 6.8 times its recent average in the last 20 minutes.</div></div>
+<div><div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px">Why in space</div><div>Solar storms can release bursts of high-energy particles that raise the dose quickly.</div></div>
+<div><div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px">What to do</div><div>Move to the most shielded area of the spacecraft and stay there until the rate drops.</div></div>
+</div>
+</section>
+
+<section aria-label="Needs attention" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 20px; background: var(--warnbg); border: 1px solid var(--warn); border-radius: 14px">
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; background: var(--warn); color: var(--bg); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px">Watch</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px">Possible behavioral health concern · Mind</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<div><div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px">What it means</div><div>You've slept under 6 hours for 3 nights, and your mood check-ins are lower than usual.</div></div>
+<div><div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px">Why in space</div><div>Isolation, noise and a shifted light/dark cycle commonly disrupt sleep on long missions.</div></div>
+<div><div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px">What to do</div><div>Dim cabin lights 1 hour before sleep, log a check-in tonight, and talk with a crewmate.</div></div>
+</div>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px">
+<sc-for list="{{cards}}" as="c" hint-placeholder-count="6">
+<a href="{{c.href}}" style="display: flex; flex-direction: column; gap: 12px; padding: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; color: var(--text); text-decoration: none">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">{{c.title}}</span>
+<span style="font-size: 12px; color: var(--muted)">{{c.hazard}}</span>
+</div>
+<span style="{{c.pillStyle}}">{{c.statusText}}</span>
+</div>
+<div style="display: flex; align-items: baseline; gap: 6px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 500">{{c.value}}</span>
+<span style="color: var(--muted); font-size: 14px">{{c.unit}}</span>
+</div>
+<svg viewBox="0 0 280 48" preserveAspectRatio="none" style="width: 100%; height: 48px" aria-hidden="true">
+<rect x="0" y="{{c.bandY}}" width="280" height="{{c.bandH}}" fill="var(--panel2)"></rect>
+<polyline points="{{c.spark}}" fill="none" stroke="{{c.color}}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline>
+</svg>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted)">
+<sc-for list="{{c.subs}}" as="s" hint-placeholder-count="2"><span>{{s}}</span></sc-for>
+</div>
+<div style="font-size: 14px; border-top: 1px solid var(--line); padding-top: 10px">{{c.note}}</div>
+</a>
+</sc-for>
+</div>
+
+<section aria-label="Today's tasks" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Today's tasks</span>
+<span style="font-size: 13px; color: var(--muted)">3 of 6 done · +60 pts earned today</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px">
+<sc-for list="{{tasks}}" as="t" hint-placeholder-count="6">
+<label style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; min-height: 44px; box-sizing: border-box; background: var(--panel2); border-radius: 10px; cursor: pointer">
+<input type="checkbox" checked="{{t.done}}" onChange="{{t.toggle}}" style="width: 18px; height: 18px; accent-color: var(--accent)">
+<span style="flex: 1">{{t.label}}</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">+{{t.pts}}</span>
+</label>
+</sc-for>
+</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startDark":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1180}}'>
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.state = { dark: null, done: { ecg: false, spo2: true, checkin: false, breakfast: true, lunch: false, exercise: true } };
+  }
+  renderVals() {
+    var dark = this.state.dark === null ? (this.props.startDark ?? true) : this.state.dark;
+    var self = this;
+    function pill(kind) {
+      var map = { normal: ['var(--okbg)', 'var(--ok)'], watch: ['var(--warnbg)', 'var(--warn)'], alert: ['var(--badbg)', 'var(--bad)'] };
+      var m = map[kind];
+      return 'padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; white-space: nowrap; background: ' + m[0] + '; color: ' + m[1] + '; border: 1px solid ' + m[1];
+    }
+    var label = { normal: '● Normal', watch: '▲ Watch', alert: '■ Alert' };
+    var color = { normal: 'var(--ok)', watch: 'var(--warn)', alert: 'var(--bad)' };
+    var raw = [
+      { title: 'Vitals', hazard: 'Heart · blood · body', status: 'normal', value: '72', unit: 'bpm resting', spark: '0,26 28,24 56,27 84,22 112,25 140,23 168,26 196,24 224,22 252,25 280,24', bandY: 14, bandH: 22, subs: ['SpO₂ 97%', 'Skin 33.9 °C', 'ECG 08:10 · normal rhythm'], note: 'All vitals inside your personal baseline.' },
+      { title: 'Radiation', hazard: 'Space radiation · ISS RadLab data', status: 'alert', value: '6.8×', unit: 'normal dose rate', spark: '0,40 28,39 56,40 84,38 112,40 140,39 168,37 196,30 224,18 252,8 280,4', bandY: 32, bandH: 14, subs: ['Mission total 27.9 mSv', 'Career limit 600 mSv'], note: 'Possible solar particle event. Go to the shielded area now.' },
+      { title: 'Gravity', hazard: 'Gravity fields · modeled', status: 'watch', value: '−1.4%', unit: 'est. hip bone density', spark: '0,10 28,12 56,14 84,16 112,18 140,21 168,23 196,26 224,28 252,31 280,33', bandY: 4, bandH: 24, subs: ['Exercise 45 / 120 min', 'Muscle est. −3%'], note: 'Exercise is behind target today. 75 minutes to go.' },
+      { title: 'Cabin', hazard: 'Hostile closed environment', status: 'normal', value: '2.4', unit: 'mmHg CO₂', spark: '0,24 28,22 56,25 84,21 112,23 140,26 168,22 196,24 224,20 252,23 280,22', bandY: 12, bandH: 26, subs: ['22.6 °C', '45% RH', '1013 hPa (watch)'], note: 'Air quality inside limits.' },
+      { title: 'Nutrition', hazard: 'Space food log', status: 'normal', value: '1,620', unit: '/ 2,800 kcal', spark: '0,40 40,40 60,30 120,30 140,22 200,22 220,22 280,22', bandY: 6, bandH: 20, subs: ['Protein 68 g', 'Calcium 54%', 'Vit D 40%'], note: 'On pace. Pick lunch from the menu.' },
+      { title: 'Mind', hazard: 'Isolation and confinement', status: 'watch', value: '5.6', unit: 'h sleep · 3-night avg', spark: '0,14 28,16 56,15 84,18 112,20 140,19 168,24 196,27 224,29 252,31 280,32', bandY: 6, bandH: 18, subs: ['Mood 2 / 5', 'Stress 3 / 5', 'HRV −12%'], note: 'See the note above.' }
+    ];
+    var cards = raw.map(function (c) { return Object.assign({}, c, { href: c.title === 'Radiation' ? 'Detail.dc.html' : c.title === 'Nutrition' ? 'Meals.dc.html' : '#', pillStyle: pill(c.status), statusText: label[c.status], color: color[c.status] }); });
+    var defs = [
+      { id: 'ecg', label: 'Take ECG', pts: 20 },
+      { id: 'spo2', label: 'Blood oxygen check', pts: 10 },
+      { id: 'checkin', label: 'Mood check-in', pts: 15 },
+      { id: 'breakfast', label: 'Log breakfast', pts: 10 },
+      { id: 'lunch', label: 'Log lunch', pts: 10 },
+      { id: 'exercise', label: 'Exercise block 1 (45 min)', pts: 40 }
+    ];
+    var tasks = defs.map(function (t) {
+      return Object.assign({}, t, { done: !!self.state.done[t.id], toggle: function () { var d = Object.assign({}, self.state.done); d[t.id] = !d[t.id]; self.setState({ done: d }); } });
+    });
+    return {
+      themeClass: dark ? 'theme-dark' : 'theme-light',
+      themeText: dark ? 'Light mode' : 'Dark mode',
+      themeLabel: dark ? 'Switch to light mode' : 'Switch to dark mode',
+      toggleTheme: function () { self.setState({ dark: !dark }); },
+      cards: cards,
+      tasks: tasks
+    };
+  }
+}
+</script>
+</body>
+</html>
