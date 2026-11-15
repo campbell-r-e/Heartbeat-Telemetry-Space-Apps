@@ -1,5 +1,7 @@
 # Heartbeat watch app (Wear OS)
 
+> This app's code was written with SI (AI) tools (Anthropic Claude) from the team's spec, and reviewed and tested by the team. See [`AI-USE.md`](../AI-USE.md).
+
 Kotlin + Compose for Wear OS app for the Galaxy Watch5 Pro (Astronaut 1). It reads the watch sensors,
 sends readings to the onboard server, and shows the approved watch screens (`mockups/watch-*.dc.html`).
 

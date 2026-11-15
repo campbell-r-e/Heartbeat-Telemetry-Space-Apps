@@ -95,6 +95,8 @@ Full citations, with page numbers for every rule, are in [`SPEC.md` §14](SPEC.m
 
 The team designed the project and made every product decision. The code, tests and documentation were written with the help of an AI coding assistant (Anthropic's Claude), working from the team's written spec, and every change was reviewed and tested before it was merged. The design mockups in `mockups/` were generated with AI tools and are labeled there, and the demo slides that combine app screenshots carry a visible "SI-assisted image" watermark. No audio is AI-generated. Astronaut 1's watch history is synthetic sample data made by a seeded script. The demo screenshots are captures of the running app and the watch.
 
+For a full list of what was made with AI tools and how each item is marked, see [`AI-USE.md`](AI-USE.md).
+
 ## License
 
 Original code is released under the Apache License 2.0, the default under the NASA Space Apps Challenge terms. The Samsung Health Sensor SDK is not included and stays under Samsung's license.

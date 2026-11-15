@@ -12,5 +12,6 @@
     "demo:reset": "npm run demo:reset -w server",
     "demo:radiation-forecast": "npm run demo:radiation-forecast -w server --",
     "typecheck": "npm run typecheck -w shared && npm run typecheck -w server && npm run typecheck -w web"
-  }
+  },
+  "siAssisted": "Code written with SI (AI) tools: Anthropic Claude, from the team's spec; reviewed and tested by the team. See AI-USE.md."
 }

@@ -28,5 +28,6 @@
     "eslint-config-next": "16.4.6",
     "tsx": "^4",
     "typescript": "^5"
-  }
+  },
+  "siAssisted": "Code written with SI (AI) tools: Anthropic Claude, from the team's spec; reviewed and tested by the team. See AI-USE.md."
 }
