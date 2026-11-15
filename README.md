@@ -6,7 +6,7 @@ Built for the [NASA Space Apps Challenge 2026](https://www.spaceappschallenge.or
 
 **Team:** Campbell Reed, Ethan Buckner, Patience Akpor (Muncie, Indiana)
 
-**Demo deck (7 slides, PDF):** https://drive.google.com/file/d/12hF5W8um5BSZ_A9hft5Yeh72-rJLs_EM/view
+**Demo deck (7 slides, PDF):** https://drive.google.com/file/d/1Fx23sqSCHrLmglDDtXac5mj4SuBv6odf/view
 
 ## What it does
 
@@ -93,7 +93,7 @@ Full citations, with page numbers for every rule, are in [`SPEC.md` §14](SPEC.m
 
 ## Use of AI tools
 
-The team designed the project and made every product decision. The code, tests and documentation were written with the help of an AI coding assistant (Anthropic's Claude), working from the team's written spec, and every change was reviewed and tested before it was merged. The design mockups in `mockups/` were generated with AI tools and are labeled there, and the demo slides that combine app screenshots carry a visible "SI-assisted image" watermark. No audio is AI-generated. Astronaut 1's watch history is synthetic sample data made by a seeded script. The demo screenshots are captures of the running app and the watch.
+The team designed the project and made every product decision. The code, tests and documentation were written with the help of an AI coding assistant (Anthropic's Claude), working from the team's written spec, and every change was reviewed and tested before it was merged. The design mockups in `mockups/` were generated with AI tools and are labeled there, and every slide of the demo deck carries a visible "SI-assisted image" watermark. No audio is AI-generated. Astronaut 1's watch history is synthetic sample data made by a seeded script. The demo screenshots are captures of the running app and the watch.
 
 For a full list of what was made with AI tools and how each item is marked, see [`AI-USE.md`](AI-USE.md).
 
